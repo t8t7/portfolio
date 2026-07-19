@@ -7,8 +7,7 @@ services:
       # Host publish port (override with HOST_PORT). Container always listens on 3000.
       - "${HOST_PORT:-3000}:3000"
     env_file:
-      - path: .env
-        required: false
+      - .env
     environment:
       NODE_ENV: production
       # App listen port inside the container (do not reuse HOST_PORT here).
