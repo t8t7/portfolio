@@ -1,0 +1,50 @@
+services:
+  portfolio:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: portfolio:latest
+    container_name: portfolio
+    restart: unless-stopped
+    ports:
+      # Host publish port (override with HOST_PORT). Container always listens on 3000.
+      - "${HOST_PORT:-3000}:3000"
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      NODE_ENV: production
+      # App listen port inside the container (do not reuse HOST_PORT here).
+      PORT: "3000"
+      # Enable when the container sits behind Nginx/Caddy/Traefik on the VPS.
+      TRUST_PROXY: "${TRUST_PROXY:-1}"
+      PUBLIC_HOST: "${PUBLIC_HOST:-}"
+      PROFILE_GITHUB: "${PROFILE_GITHUB:-}"
+      PROFILE_HH: "${PROFILE_HH:-}"
+      PROFILE_TELEGRAM: "${PROFILE_TELEGRAM:-}"
+      PROJECT_DOOR_SOFT: "${PROJECT_DOOR_SOFT:-}"
+      TELEGRAM_BOT_TOKEN: "${TELEGRAM_BOT_TOKEN:-}"
+      TELEGRAM_CHAT_ID: "${TELEGRAM_CHAT_ID:-}"
+      YANDEX_SMTP_HOST: "${YANDEX_SMTP_HOST:-smtp.yandex.ru}"
+      YANDEX_SMTP_PORT: "${YANDEX_SMTP_PORT:-465}"
+      YANDEX_SMTP_SECURE: "${YANDEX_SMTP_SECURE:-true}"
+      YANDEX_EMAIL: "${YANDEX_EMAIL:-}"
+      YANDEX_PASSWORD: "${YANDEX_PASSWORD:-}"
+      MAIL_TO: "${MAIL_TO:-}"
+    volumes:
+      - portfolio_logs:/app/server/logs
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "node",
+          "-e",
+          "fetch('http://127.0.0.1:3000/').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+        ]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  portfolio_logs:

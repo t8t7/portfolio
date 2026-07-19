@@ -1,0 +1,43 @@
+# Dependencies & build output
+node_modules
+npm-debug.log*
+dist
+dist-ssr
+coverage
+reports
+.npm
+
+# Git / IDE
+.git
+.gitignore
+.gitattributes
+.vscode
+.idea
+*.md
+!README.md
+
+# Env & secrets (inject via compose env_file / host env)
+.env
+.env.*
+!.env.example
+
+# Tests & CI (not needed in the runtime image)
+tests
+.gitlab-ci.yml
+vitest.config.ts
+eslint.config.js
+**/*.test.ts
+**/*.test.tsx
+**/*.spec.ts
+**/*.spec.tsx
+
+# Local logs / data
+server/logs
+logs
+data
+*.log
+
+# Docker itself (avoid recursive context bloat)
+Dockerfile*
+docker-compose*.yml
+.dockerignore
