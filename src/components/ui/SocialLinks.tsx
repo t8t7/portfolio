@@ -1,5 +1,6 @@
 import { useTranslation } from 'react-i18next';
 import type { SocialLink } from '@/types';
+import { getOpenProfilePath, type SocialProfileId } from '@/api/openProfile';
 import { cn } from '@/utils';
 import hhLogo from '@/assets/icons/hh.svg';
 
@@ -37,6 +38,8 @@ const icons = {
   ),
 } as const;
 
+const SERVER_PROFILES = new Set<SocialProfileId>(['github', 'hh', 'telegram']);
+
 interface SocialLinksProps {
   links: SocialLink[];
   className?: string;
@@ -49,37 +52,38 @@ export function SocialLinks({ links, className }: SocialLinksProps) {
     <ul className={cn('flex items-center gap-3', className)}>
       {links.map((link) => {
         const label = t(`social.${link.id}`);
-        const isPlaceholder = !link.href || link.placeholder;
         const classNameLink =
-          'inline-flex h-10 w-10 items-center justify-center rounded-sm border border-ink-line text-fog transition-colors duration-300 hover:border-accent/40 hover:text-accent-soft';
+          'inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-sm border border-ink-line bg-transparent text-fog transition-colors duration-300 hover:border-accent/40 hover:text-accent-soft';
 
-        if (isPlaceholder) {
+        if (SERVER_PROFILES.has(link.id as SocialProfileId)) {
+          const profile = link.id as SocialProfileId;
+
           return (
             <li key={link.id}>
-              <span
-                role="link"
-                aria-disabled="true"
-                aria-label={`${label}. ${t('social.placeholder')}`}
-                title={t('social.placeholder')}
-                className={cn(classNameLink, 'cursor-default opacity-70')}
+              <a
+                href={getOpenProfilePath(profile)}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={label}
+                className={classNameLink}
               >
                 {icons[link.icon]}
-              </span>
+              </a>
             </li>
           );
         }
 
         return (
           <li key={link.id}>
-            <a
-              href={link.href}
-              target={link.href.startsWith('mailto:') ? undefined : '_blank'}
-              rel={link.href.startsWith('mailto:') ? undefined : 'noreferrer noopener'}
-              aria-label={label}
-              className={classNameLink}
+            <span
+              role="link"
+              aria-disabled="true"
+              aria-label={`${label}. ${t('social.placeholder')}`}
+              title={t('social.placeholder')}
+              className={cn(classNameLink, 'cursor-default opacity-70')}
             >
               {icons[link.icon]}
-            </a>
+            </span>
           </li>
         );
       })}

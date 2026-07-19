@@ -1,0 +1,565 @@
+{
+  "meta": {
+    "title": "Anton Fedotov | Python Backend Developer",
+    "description": "Portfolio of Anton Fedotov — Mechanical Design Engineer transitioning into Python Backend Development and QA."
+  },
+  "language": {
+    "switcherLabel": "Language",
+    "ru": "RU",
+    "en": "EN"
+  },
+  "nav": {
+    "primary": "Primary navigation",
+    "mobile": "Mobile navigation",
+    "about": "About",
+    "experience": "Experience",
+    "skills": "Skills",
+    "projects": "Projects",
+    "certificates": "Certificates",
+    "recommendations": "Recommendations",
+    "resume": "Resume",
+    "contact": "Contact",
+    "contactCta": "Contact",
+    "getInTouch": "Get in touch",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "menu": "Menu"
+  },
+  "social": {
+    "github": "GitHub",
+    "telegram": "Telegram",
+    "hh": "HH.ru",
+    "email": "Email",
+    "twitter": "Twitter",
+    "placeholder": "Link coming soon"
+  },
+  "profile": {
+    "name": "Anton Fedotov",
+    "firstName": "Anton",
+    "title": "Python Backend Developer"
+  },
+  "hero": {
+    "ctaPrimary": "View Projects",
+    "ctaSecondary": "Contact Me",
+    "scroll": "Scroll",
+    "scrollAria": "Scroll to about section",
+    "openToLabel": "Open to opportunities:",
+    "titles": [
+      "Python Backend Developer",
+      "Mechanical Design Engineer",
+      "QA Engineer"
+    ],
+    "description": [
+      "Mechanical Design Engineer with practical experience in product development and engineering management.",
+      "Currently transitioning into Python Backend Development through real personal projects while studying software architecture, APIs, Docker, PostgreSQL, microservices and modern backend technologies.",
+      "My goal is to combine engineering thinking with software engineering to build reliable real-world applications."
+    ],
+    "openTo": [
+      "Python Backend Developer",
+      "Backend Developer",
+      "Junior / Middle Backend Developer",
+      "QA Engineer",
+      "Mechanical Design Engineer"
+    ]
+  },
+  "about": {
+    "eyebrow": "About",
+    "headline": "Engineering experience and a transition into Backend Development.",
+    "paragraphs": [
+      "My background combines several technical fields: mechanical engineering, CAD design, manufacturing, Python Backend Development, and QA Engineering.",
+      "I have practical engineering experience in production and continue expanding my software engineering skills through real-world personal projects.",
+      "I work with and study REST API, Docker, PostgreSQL, Linux, Git, and Nginx — applying them in practice."
+    ],
+    "highlights": [
+      {
+        "label": "Disciplines",
+        "value": "Engineering\nBackend\nQA"
+      },
+      {
+        "label": "Engineering\nExperience",
+        "value": "4+ Years"
+      },
+      {
+        "label": "Personal Focus\nsince 2022",
+        "value": "Python Backend"
+      },
+      {
+        "label": "Active learning",
+        "value": "Current focus",
+        "stack": [
+          "Microservices",
+          "gRPC",
+          "Docker",
+          "PostgreSQL",
+          "Clean Architecture"
+        ]
+      }
+    ],
+    "skillGroups": [
+      {
+        "id": "engineering",
+        "label": "Engineering",
+        "tags": [
+          "Mechanical Design",
+          "SolidWorks",
+          "Solid Edge",
+          "Manufacturing"
+        ]
+      },
+      {
+        "id": "backend",
+        "label": "Backend",
+        "tags": [
+          "Python",
+          "REST API",
+          "PostgreSQL",
+          "Docker",
+          "Linux",
+          "Git",
+          "Nginx"
+        ]
+      },
+      {
+        "id": "qa",
+        "label": "QA",
+        "tags": [
+          "QA Engineering"
+        ]
+      }
+    ]
+  },
+  "experience": {
+    "eyebrow": "Experience",
+    "title": "Work experience",
+    "description": "4 years 6 months — from Design Engineer to Head of the Design Department.",
+    "responsibilitiesLabel": "Responsibilities",
+    "technologiesLabel": "Technologies",
+    "items": {
+      "avalon": {
+        "company": "Express Garant – Avalon",
+        "role": "Head of the Design Department",
+        "period": "October 2025 — June 2026",
+        "location": "",
+        "responsibilities": [
+          "Managed the design department and organized the work of design engineers and process engineers.",
+          "Designed metal structures.",
+          "Optimized product designs, unified parts, and reduced manufacturing cost.",
+          "Organized collaboration between the design department, production, quality control (OTK), and the procurement department.",
+          "Developed and implemented measures to reduce defects and production errors.",
+          "Controlled preparation of design documentation and supported product launch into production.",
+          "Introduced design standards and improved the quality of released documentation.",
+          "Worked in SolidWorks.",
+          "Solved non-standard technical problems and modernized existing products and production processes.",
+          "Controlled project deadlines and ensured timely release of design documentation."
+        ]
+      },
+      "intecron": {
+        "company": "INTECRON",
+        "role": "Design Engineer",
+        "period": "January 2024 — September 2025",
+        "location": "Yoshkar-Ola",
+        "responsibilities": [
+          "Designed steel doors.",
+          "Prepared drawings and technical documentation.",
+          "Supported the production process.",
+          "Introduced design improvements.",
+          "Controlled the quality of finished products.",
+          "Participated in complex custom projects.",
+          "Managed projects related to steel door manufacturing."
+        ]
+      },
+      "spas": {
+        "company": "Spas",
+        "role": "Design Engineer",
+        "period": "May 2023 — December 2023",
+        "location": "Yoshkar-Ola, dveri-spas.ru",
+        "responsibilities": [
+          "Developed design and technical documentation.",
+          "Designed and calculated metal door structures.",
+          "Supported the manufacturing process.",
+          "Made project changes based on testing and operation results.",
+          "Controlled the quality of manufactured products."
+        ]
+      },
+      "kontakt": {
+        "company": "JSC Kontakt",
+        "role": "Design Engineer",
+        "period": "November 2022 — April 2023",
+        "location": "",
+        "responsibilities": [
+          "Worked in Solid Edge with drawings, refined designs, and developed constructions. Worked with sheet metal."
+        ]
+      },
+      "meridum": {
+        "company": "OOO PK Meridium",
+        "role": "Design Engineer",
+        "period": "January 2022 — November 2022",
+        "location": "",
+        "responsibilities": [
+          "development and analysis of design documentation;",
+          "writing technological regulations;",
+          "working with key clients;",
+          "working with drawings;",
+          "preparing drawings and subsequently sending them to the blanking section",
+          "Worked in SolidWorks 2019 and used ToolBox, worked with equations",
+          "Worked in CupCat",
+          "Limited experience in Corel Draw",
+          "Developed mechanisms of light and medium complexity (mechanics and kinematics), (limited experience)",
+          "Worked with sheet metal (steel doors) and various products, and also built different assemblies with internal mechanisms"
+        ]
+      }
+    },
+    "profile": {
+      "title": "Technical Expertise",
+      "note": "My background combines mechanical engineering, Backend Development and QA Engineering. Today my primary focus is Backend Development, while my engineering experience helps me build software with a strong understanding of real production processes and system architecture.",
+      "cards": [
+        {
+          "id": "engineering",
+          "title": "Engineering",
+          "caption": "Experience",
+          "points": [
+            "4+ years commercial engineering experience",
+            "Mechanical Design",
+            "CAD / SolidWorks",
+            "Production Engineering",
+            "Engineering Team Leadership"
+          ]
+        },
+        {
+          "id": "backend",
+          "title": "Backend",
+          "caption": "Specialization",
+          "points": [
+            "Python",
+            "REST API",
+            "PostgreSQL",
+            "Docker",
+            "Linux",
+            "Git"
+          ],
+          "learningLabel": "Currently learning:",
+          "learning": [
+            "Microservices",
+            "gRPC",
+            "Clean Architecture"
+          ]
+        },
+        {
+          "id": "qa",
+          "title": "QA Engineering",
+          "caption": "Competency",
+          "points": [
+            "QA Engineer Certificate",
+            "Web Testing",
+            "API Testing",
+            "Postman",
+            "Swagger",
+            "SQL",
+            "DevTools",
+            "Test Documentation",
+            "Manual Testing"
+          ]
+        }
+      ]
+    }
+  },
+  "skills": {
+    "eyebrow": "Skills",
+    "title": "Engineering • Backend • QA",
+    "description": "Commercial engineering experience combined with practical Backend development and QA skills gained through real projects and continuous learning.",
+    "categories": {
+      "engineering": {
+        "title": "Engineering",
+        "skills": [
+          "4+ years commercial engineering experience",
+          "Engineering Management",
+          "Mechanical Design",
+          "CAD Design",
+          "SolidWorks",
+          "Solid Edge",
+          "Production Engineering",
+          "Technical Documentation"
+        ]
+      },
+      "backend": {
+        "title": "Backend",
+        "skills": [
+          "Python",
+          "REST API",
+          "PostgreSQL",
+          "Docker",
+          "Git",
+          "Linux",
+          "Nginx"
+        ],
+        "learningLabel": "Currently Learning",
+        "learning": [
+          "Microservices",
+          "gRPC",
+          "Clean Architecture"
+        ]
+      },
+      "qa": {
+        "title": "QA Engineering",
+        "skills": [
+          "Manual Testing",
+          "API Testing",
+          "Postman",
+          "Swagger",
+          "SQL",
+          "DevTools",
+          "Jira",
+          "Xray"
+        ],
+        "methodsLabel": "Testing Methods",
+        "methods": [
+          "Smoke Testing",
+          "Regression Testing",
+          "Sanity Testing"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "eyebrow": "Projects",
+    "title": "Real projects built by hand.",
+    "description": "From engineering systems for production automation to Backend development, QA Engineering, and a personal portfolio.",
+    "details": "Learn more →",
+    "openProject": "Open project →",
+    "live": "Live project →",
+    "repo": "Repository →",
+    "items": {
+      "door-soft": {
+        "title": "Door Soft Platform",
+        "description": "A comprehensive automation system for metal door manufacturing.\n\nThe project includes a modern web interface, Backend, REST API, and an engineering calculator for automating production processes.",
+        "role": "Python Backend",
+        "highlights": [
+          "More than 150 REST APIs",
+          "Backend fully written in Python",
+          "Custom project architecture",
+          "Production calculation workflows",
+          "Data preparation for sheet metal nesting",
+          "Deployed on a VPS with Docker and Nginx",
+          "HTTPS, custom domain, and full production deployment"
+        ]
+      },
+      "door-sandbox": {
+        "title": "Door Calculation Sandbox",
+        "description": "An isolated development environment where new features are built and tested before moving to production.\n\nIt serves as an engineering sandbox for metal door calculation algorithms, API testing, and business logic validation.",
+        "role": "Backend Development",
+        "highlights": [
+          "More than 150 REST APIs",
+          "Separate development environment",
+          "New features are verified before production",
+          "Engineering algorithm testing",
+          "Work with calculations and production logic"
+        ]
+      },
+      "ispring-lms": {
+        "title": "iSpring LMS Testing",
+        "description": "A practical project focused on manual testing of a corporate LMS platform.\n\nThe work included functional testing, REST API testing, localization checks, user scenarios, and documentation review.",
+        "role": "QA Engineering",
+        "highlights": [
+          "Manual Testing",
+          "REST API Testing",
+          "Swagger",
+          "Postman",
+          "SQL",
+          "DevTools",
+          "Jira",
+          "Xray"
+        ]
+      }
+    }
+  },
+  "caseStudy": {
+    "back": "← Back to projects",
+    "stack": "Stack",
+    "placeholderMedia": "Media will be added later",
+    "placeholderVideo": "Video will be added later",
+    "evidenceAlt": "Work evidence: {{name}}",
+    "lightboxClose": "Close",
+    "lightboxPrev": "Previous",
+    "lightboxNext": "Next",
+    "sandbox": {
+      "eyebrow": "Case Study",
+      "title": "Door Calculation Sandbox",
+      "role": "Backend Development",
+      "year": "2026",
+      "overviewTitle": "Project overview",
+      "overview": "An isolated development environment for building and validating new Door Soft Platform features before production.\n\nThe sandbox is an engineering proving ground: metal door calculation algorithms, REST APIs, and production business logic are developed and verified here.",
+      "architectureTitle": "Architecture",
+      "architecture": [
+        "Separate Backend contour for safe development",
+        "REST API for engineering and production calculations",
+        "Isolation from the production environment",
+        "Preparation of changes for transfer to the main platform"
+      ],
+      "tasksTitle": "Tasks",
+      "tasks": [
+        "Development of new calculation algorithms",
+        "API testing before production",
+        "Validation of engineering and production logic",
+        "Iterative improvement of platform features"
+      ],
+      "galleryTitle": "Gallery",
+      "galleryNote": "UI and calculation scenario screenshots will be added later.",
+      "videoTitle": "Video",
+      "notice": "The demonstration environment is available on request."
+    },
+    "ispring": {
+      "eyebrow": "Case Study",
+      "title": "iSpring LMS Testing",
+      "role": "QA Engineering",
+      "year": "2026",
+      "overviewTitle": "Project overview",
+      "overview": "A practical project focused on manual testing of the corporate LMS platform at iSpring Institute.\n\nThe work included functional testing of the web interface and REST API, localization checks, user scenarios, and related documentation.",
+      "testedTitle": "What was tested",
+      "tested": [
+        "LMS web interface",
+        "REST API",
+        "Localization",
+        "User scenarios",
+        "Documentation"
+      ],
+      "toolsTitle": "Tools",
+      "tools": [
+        "Postman",
+        "Swagger",
+        "SQL",
+        "DevTools",
+        "Jira",
+        "Xray"
+      ],
+      "tasksTitle": "Completed tasks",
+      "tasks": [
+        "Manual Testing",
+        "REST API Testing",
+        "Smoke / Regression / Sanity",
+        "Bug report creation",
+        "Work with test artifacts in Jira and Xray"
+      ],
+      "certificateTitle": "Certificate",
+      "certificateNote": "The certificate scan is available in the Certificates section. An additional copy can be placed here later.",
+      "testCasesTitle": "Test cases",
+      "checklistsTitle": "Checklists",
+      "bugReportsTitle": "Bug reports",
+      "screenshotsTitle": "Postman and Swagger screenshots",
+      "placeholderDocs": "Material will be added later",
+      "notice": "Some materials are hidden because they relate to internal training and corporate data."
+    }
+  },
+  "certificates": {
+    "eyebrow": "Certificates",
+    "title": "Verified knowledge and training",
+    "description": "Documents confirming professional training and development in engineering and QA Engineering.",
+    "documentLabel": "Certificate",
+    "dateLabel": "Date",
+    "statusLabel": "Status",
+    "viewCertificate": "View certificate",
+    "openDocument": "Open document",
+    "modalClose": "Close",
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "resetZoom": "Reset zoom",
+    "placeholder": "A certificate image will be added once a digital copy is prepared.",
+    "items": {
+      "ispring-qa": {
+        "title": "QA Intensive.\nIntroduction to the Profession",
+        "issuer": "iSpring Institute",
+        "date": "July 2026",
+        "status": "Final project successfully defended",
+        "description": "A practical intensive covering the fundamentals of QA Engineering, completed with a defended final project."
+      }
+    }
+  },
+  "recommendations": {
+    "eyebrow": "Recommendations",
+    "title": "Recommendation Letters",
+    "description": "Official recommendation letters from company directors confirming my professional qualities, engineering experience, and the results of my work.",
+    "openLetter": "Open recommendation letter",
+    "viewDocument": "View document",
+    "modalClose": "Close",
+    "placeholder": "A scan of the recommendation letter will be added once a digital copy is prepared.",
+    "documentLabel": "Recommendation letter",
+    "confirmsLabel": "The document confirms:",
+    "items": {
+      "avalon": {
+        "company": "LLC \"Avalon\"",
+        "role": "Head of Design Department",
+        "summary": "Official recommendation letter from the company director.",
+        "points": [
+          "leading the design engineering department",
+          "organizing the full product development cycle",
+          "collaboration with production, quality control, and engineering teams",
+          "introducing new product models",
+          "optimizing designs",
+          "reducing manufacturing errors",
+          "confident work in SolidWorks"
+        ]
+      },
+      "meridium": {
+        "company": "LLC PC «Meridium»",
+        "role": "Design Engineer",
+        "summary": "Official recommendation letter from the company director.",
+        "points": [
+          "developing design documentation",
+          "project analysis",
+          "preparing technological regulations",
+          "working with production",
+          "confident work in SolidWorks",
+          "engineering competencies"
+        ]
+      }
+    }
+  },
+  "resume": {
+    "eyebrow": "Resume",
+    "title": "Download the full professional profile.",
+    "description": "A concise PDF with experience, stack, and selected outcomes — ready for recruiters and hiring managers.",
+    "download": "Download resume"
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "headline": "Let’s discuss opportunities.",
+    "description": "Open to Python Backend, QA, and mechanical design roles. Send a message through the form — I will reply when I can.",
+    "email": "Email",
+    "phone": "Phone",
+    "location": "Location",
+    "form": {
+      "name": "Name",
+      "email": "Email",
+      "company": "Company",
+      "message": "Message",
+      "submit": "Send message",
+      "sending": "Sending…"
+    },
+    "validation": {
+      "required": "This field is required.",
+      "nameChars": "Name may only contain letters, spaces, and hyphens.",
+      "nameLength": "Name must be between 2 and 60 characters.",
+      "emailInvalid": "Enter a valid email address.",
+      "emailLength": "Email must not exceed 100 characters.",
+      "companyLength": "Company name must not exceed 100 characters.",
+      "messageMin": "Message must be at least 10 characters.",
+      "messageMax": "Message must not exceed 2000 characters.",
+      "unsafe": "Unsafe content detected. Remove HTML, scripts, or suspicious patterns.",
+      "invalidType": "Invalid data type."
+    },
+    "status": {
+      "success": "Thank you!\nYour message has been sent successfully.",
+      "error": "Something went wrong. Please email me directly.",
+      "mailto": "Opening your email client…",
+      "rateLimited": "Too many messages. Please try again in a few minutes.",
+      "deliveryError": "Your message was saved, but delivery is temporarily unavailable. Please try again later or email me directly."
+    },
+    "mailSubject": "Portfolio inquiry from {{name}}",
+    "mailCompany": "Company: {{company}}"
+  },
+  "footer": {
+    "note": "Crafted with intention. Available for conversations that respect both craft and impact.",
+    "navigate": "Navigate",
+    "more": "More",
+    "rights": "© {{year}} {{name}}. All rights reserved."
+  }
+}

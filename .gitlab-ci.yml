@@ -1,0 +1,115 @@
+# GitLab CI/CD — portfolio (Node.js / Vite / Express)
+# Fails the pipeline on any non-zero exit code from lint, test, or build.
+
+workflow:
+  rules:
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    - if: $CI_COMMIT_BRANCH
+
+stages:
+  - install
+  - lint
+  - test
+  - build
+
+variables:
+  npm_config_cache: "$CI_PROJECT_DIR/.npm"
+  # Ensure scripts fail the job on error (npm already does; keep explicit).
+  FF_USE_FASTZIP: "true"
+
+default:
+  image: node:22-bookworm
+  interruptible: true
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+      - node_modules/
+    policy: pull-push
+
+# ---------------------------------------------------------------------------
+# install
+# ---------------------------------------------------------------------------
+install_dependencies:
+  stage: install
+  script:
+    - npm ci
+  artifacts:
+    expire_in: 1 hour
+    paths:
+      - node_modules/
+      - package-lock.json
+
+# ---------------------------------------------------------------------------
+# lint (TypeScript + ESLint)
+# ---------------------------------------------------------------------------
+lint:
+  stage: lint
+  needs:
+    - job: install_dependencies
+      artifacts: true
+  script:
+    - npm run typecheck
+    - npm run lint
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+      - node_modules/
+    policy: pull
+
+# ---------------------------------------------------------------------------
+# test
+# ---------------------------------------------------------------------------
+test:
+  stage: test
+  needs:
+    - job: install_dependencies
+      artifacts: true
+  script:
+    - npm run test
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+      - node_modules/
+    policy: pull
+  artifacts:
+    when: always
+    expire_in: 7 days
+    reports:
+      junit: reports/junit.xml
+    paths:
+      - reports/
+
+# ---------------------------------------------------------------------------
+# build
+# ---------------------------------------------------------------------------
+build:
+  stage: build
+  needs:
+    - job: install_dependencies
+      artifacts: true
+    - job: lint
+    - job: test
+  script:
+    - npm run build
+  cache:
+    key:
+      files:
+        - package-lock.json
+    paths:
+      - .npm/
+      - node_modules/
+    policy: pull
+  artifacts:
+    name: "portfolio-dist-$CI_COMMIT_SHORT_SHA"
+    expire_in: 7 days
+    paths:
+      - dist/
