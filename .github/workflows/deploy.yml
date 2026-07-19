@@ -5,11 +5,31 @@ on:
 env:
   IMAGE_TAG: ghcr.io/t8t7/portfolio:latest
 jobs:
-  build-and-deploy:
+  build-and-test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write 
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Build project
+        run: npm run build
+      - name: Run tests
+        run: npm test
+
+  build-and-deploy:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -23,6 +43,25 @@ jobs:
         run: |
           docker build -t $IMAGE_TAG .
           docker push $IMAGE_TAG
+      # Creates $HOME/apps/portfolio (== ~/apps/portfolio). Avoid target: ~/... —
+      # some scp-action versions create a literal "~" directory.
+      - name: Ensure VPS deploy directory exists
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: mkdir -p "$HOME/apps/portfolio"
+      # Relative target is under the SSH user's home → ~/apps/portfolio/docker-compose.yml
+      - name: Copy docker-compose.yml to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SERVER_IP }}
+          username: ${{ secrets.SERVER_USER }}
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          source: docker-compose.yml
+          target: apps/portfolio
+          overwrite: true
       - name: Deploy to VPS
         uses: appleboy/ssh-action@v1.0.3
         with:
@@ -31,6 +70,7 @@ jobs:
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
             echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            cd ~/apps/portfolio
+            cd "$HOME/apps/portfolio"
+            test -f docker-compose.yml
             docker compose pull
             docker compose up -d
