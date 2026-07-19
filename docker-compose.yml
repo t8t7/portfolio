@@ -33,6 +33,8 @@ services:
       MAIL_TO: "${MAIL_TO:-}"
     volumes:
       - portfolio_logs:/app/server/logs
+    networks:
+      - door-calculator_default
     healthcheck:
       test:
         [
@@ -48,3 +50,7 @@ services:
 
 volumes:
   portfolio_logs:
+
+networks:
+  door-calculator_default:
+    external: true
