@@ -1,6 +1,6 @@
 services:
   portfolio:
-    image: registry.gitlab.com/t8t7-group/portfolio:latest
+    image: ghcr.io/t8t7/portfolio:latest
     container_name: portfolio
     restart: unless-stopped
     ports:
