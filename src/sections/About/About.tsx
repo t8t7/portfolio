@@ -26,10 +26,10 @@ export function About() {
       <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:gap-20">
         <div>
           <SectionHeading eyebrow={t('about.eyebrow')} title={t('about.headline')} />
-          <div className="space-y-5">
+          <div className="measure-readable space-y-6">
             {paragraphs.map((paragraph, index) => (
               <Reveal key={`about-paragraph-${index}`}>
-                <p className="text-base leading-relaxed text-fog sm:text-lg">{paragraph}</p>
+                <p className="copy-readable">{paragraph}</p>
               </Reveal>
             ))}
           </div>
@@ -41,7 +41,7 @@ export function About() {
 
                 return (
                   <div key={`about-skill-group-${group.id || groupIndex}`}>
-                    <p className="mb-2.5 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-fog">
+                    <p className="meta-readable mb-2.5 font-medium uppercase text-fog">
                       {group.label}
                     </p>
                     <ul className="flex flex-wrap gap-2">

@@ -14,7 +14,7 @@ function ProjectCta({
 }) {
   const { t } = useLocale();
   const project = projectsMeta.find((item) => item.id === projectId);
-  if (!project) return null;
+  if (!project || project.cta.type === 'none') return null;
 
   const label = t(`projects.${project.cta.labelKey}`);
   const className =
@@ -41,7 +41,7 @@ function ProjectCta({
     );
   }
 
-  return <span className="text-sm font-medium text-accent-soft">{label}</span>;
+  return null;
 }
 
 export function Projects() {
@@ -76,7 +76,7 @@ export function Projects() {
                 <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-chalk sm:text-3xl">
                   {t(`projects.items.${project.id}.title`)}
                 </h3>
-                <p className="mt-4 max-w-xl whitespace-pre-line text-base leading-relaxed text-fog">
+                <p className="copy-readable measure-readable mt-4 whitespace-pre-line">
                   {t(`projects.items.${project.id}.description`)}
                 </p>
               </div>
@@ -86,7 +86,7 @@ export function Projects() {
                   {highlights.map((highlight, highlightIndex) => (
                     <li
                       key={`${project.id}-highlight-${highlightIndex}`}
-                      className="flex gap-3 text-sm text-mist"
+                      className="list-readable flex gap-3"
                     >
                       <span className="mt-2 h-px w-4 shrink-0 bg-accent" aria-hidden="true" />
                       <span>{highlight}</span>

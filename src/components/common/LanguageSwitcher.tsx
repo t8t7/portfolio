@@ -26,7 +26,7 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
       role="group"
       aria-label={t('language.switcherLabel')}
       className={cn(
-        'inline-flex items-center gap-1 text-[0.7rem] font-medium uppercase tracking-[0.2em] text-fog',
+        'inline-flex items-center gap-1 text-sm font-medium uppercase leading-none tracking-[0.08em] text-mist',
         className,
       )}
     >
@@ -42,10 +42,10 @@ export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
             onClick={() => onSelect(language)}
             aria-pressed={active === language}
             className={cn(
-              'px-1.5 py-1 transition-colors duration-300',
+              'px-1.5 py-2 transition-colors duration-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent',
               active === language
                 ? 'text-accent-soft'
-                : 'text-fog hover:text-chalk',
+                : 'text-mist hover:text-chalk',
             )}
           >
             {t(`language.${language}`, { defaultValue: LANGUAGE_LABELS[language] })}

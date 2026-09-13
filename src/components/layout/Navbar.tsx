@@ -33,44 +33,44 @@ export function Navbar() {
           : 'border-b border-transparent bg-transparent',
       )}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-4 md:h-[4.5rem]">
+      <div className="container-page flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
         <button
           type="button"
           onClick={() => scrollToSection('hero')}
-          className="font-display text-sm font-semibold tracking-[0.2em] uppercase text-chalk transition-colors hover:text-accent-soft"
+          className="shrink-0 whitespace-nowrap py-2 font-display text-base font-semibold uppercase leading-none tracking-[0.12em] text-chalk transition-colors hover:text-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
         >
           {t('profile.firstName')}
         </button>
 
-        <nav className="hidden items-center gap-8 lg:flex" aria-label={t('nav.primary')}>
+        <nav className="hidden min-w-0 items-center justify-center gap-4 xl:flex 2xl:gap-6" aria-label={t('nav.primary')}>
           {navigation.map((item) => (
             <button
               key={item.id}
               type="button"
               onClick={() => onNavigate(item.id)}
-              className="text-[0.8rem] font-medium uppercase tracking-[0.18em] text-fog transition-colors hover:text-chalk"
+              className="whitespace-nowrap py-2 text-sm font-medium uppercase leading-none tracking-[0.08em] text-mist transition-colors hover:text-chalk focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-accent"
             >
               {t(`nav.${item.id}`)}
             </button>
           ))}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden shrink-0 items-center gap-3 xl:flex">
           <LanguageSwitcher />
           <Button
             variant="secondary"
-            className="!px-4 !py-2 text-xs uppercase tracking-[0.16em]"
+            className="!px-4 !py-2.5 text-sm uppercase leading-none tracking-[0.08em]"
             onClick={() => onNavigate('contact')}
           >
             {t('nav.contactCta')}
           </Button>
         </div>
 
-        <div className="flex items-center gap-3 lg:hidden">
+        <div className="flex items-center gap-3 xl:hidden">
           <LanguageSwitcher />
           <button
             type="button"
-            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-ink-line text-chalk"
+            className="inline-flex h-10 w-10 items-center justify-center rounded-sm border border-ink-line text-chalk transition-colors hover:border-accent/50 hover:text-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
             aria-label={open ? t('nav.closeMenu') : t('nav.openMenu')}
             aria-expanded={open}
             onClick={() => setOpen((value) => !value)}
@@ -107,7 +107,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="border-t border-ink-line bg-ink/95 backdrop-blur-xl lg:hidden"
+            className="border-t border-ink-line bg-ink/95 backdrop-blur-xl xl:hidden"
           >
             <nav className="container-page flex flex-col gap-1 py-6" aria-label={t('nav.mobile')}>
               {navigation.map((item) => (
@@ -115,7 +115,7 @@ export function Navbar() {
                   key={item.id}
                   type="button"
                   onClick={() => onNavigate(item.id)}
-                  className="rounded-sm px-2 py-3 text-left font-display text-xl text-chalk"
+                  className="rounded-sm px-2 py-3.5 text-left font-display text-xl leading-snug tracking-[-0.01em] text-chalk transition-colors hover:text-accent-soft focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-accent"
                 >
                   {t(`nav.${item.id}`)}
                 </button>

@@ -1,5 +1,5 @@
 export type SocialProfileId = 'github' | 'hh' | 'telegram';
-export type ProjectRedirectId = 'door-soft';
+export type ProjectRedirectId = 'door-soft' | 'goodpapa';
 
 /** Same-origin path only — real destination URLs live on the server. */
 export function getOpenProfilePath(profile: SocialProfileId): string {

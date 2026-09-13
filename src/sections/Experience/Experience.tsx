@@ -36,7 +36,7 @@ export function Experience() {
             return (
               <article key={cardKey} className="bg-ink-soft p-6 sm:p-7">
                 {card.caption ? (
-                  <p className="mb-2 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-accent-soft">
+                  <p className="meta-readable mb-2 font-medium uppercase text-accent-soft">
                     {card.caption}
                   </p>
                 ) : null}
@@ -47,7 +47,7 @@ export function Experience() {
                   {points.map((point, pointIndex) => (
                     <li
                       key={`${cardKey}-point-${pointIndex}`}
-                      className="flex gap-3 text-sm leading-relaxed text-mist"
+                      className="list-readable flex gap-3"
                     >
                       <span
                         className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
@@ -60,14 +60,14 @@ export function Experience() {
 
                 {learning.length > 0 ? (
                   <div className="mt-4 border-t border-ink-line/80 pt-4">
-                    <p className="mb-2 text-[0.65rem] font-medium uppercase tracking-[0.18em] text-fog">
+                    <p className="meta-readable mb-2 font-medium uppercase text-fog">
                       {card.learningLabel}
                     </p>
                     <ul className="space-y-1.5">
                       {learning.map((item, learningIndex) => (
                         <li
                           key={`${cardKey}-learning-${learningIndex}`}
-                          className="flex gap-3 text-sm leading-relaxed text-fog"
+                          className="list-readable flex gap-3 text-fog"
                         >
                           <span
                             className="mt-2 h-px w-2.5 shrink-0 bg-accent/70"
@@ -84,7 +84,7 @@ export function Experience() {
           })}
         </div>
 
-        <p className="mt-6 border border-accent/25 bg-accent-dim/40 px-5 py-4 text-sm leading-relaxed text-mist sm:px-6 sm:py-5 sm:text-base">
+        <p className="copy-readable mt-6 border border-accent/25 bg-accent-dim/40 px-5 py-4 sm:px-6 sm:py-5">
           {profileNote}
         </p>
       </Reveal>
@@ -129,14 +129,14 @@ export function Experience() {
                   </div>
 
                   <div>
-                    <p className="mb-4 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-fog">
+                    <p className="meta-readable mb-4 font-medium uppercase text-fog">
                       {t('experience.responsibilitiesLabel')}
                     </p>
                     <ul className="space-y-3">
                       {responsibilities.map((responsibility, index) => (
                         <li
                           key={`${item.id}-responsibility-${index}`}
-                          className="flex gap-3 text-sm leading-relaxed text-mist"
+                          className="list-readable flex gap-3"
                         >
                           <span
                             className="mt-2 h-1 w-1 shrink-0 rounded-full bg-accent"
@@ -149,7 +149,7 @@ export function Experience() {
 
                     {item.technologies.length > 0 ? (
                       <div className="mt-6">
-                        <p className="mb-3 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-fog">
+                        <p className="meta-readable mb-3 font-medium uppercase text-fog">
                           {t('experience.technologiesLabel')}
                         </p>
                         <div className="flex flex-wrap gap-2">

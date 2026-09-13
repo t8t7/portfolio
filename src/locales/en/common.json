@@ -343,6 +343,20 @@
           "HTTPS, custom domain, and full production deployment"
         ]
       },
+      "goodpapa": {
+        "title": "Dobry Papa — Furniture Studio Digital Platform",
+        "description": "A commercial full-stack project for a furniture studio: a public catalog website, a secure administration panel, and a standalone Telegram Mini App.\n\nThe platform brings project, photo, video, contact, and company settings management into one digital system.",
+        "role": "Full-stack Development",
+        "highlights": [
+          "Responsive public website for the furniture studio",
+          "Administration panel for content management",
+          "Project catalog, photo gallery, and video library",
+          "Telegram Mini App powered by the public API",
+          "Supabase: PostgreSQL, authentication, and Row Level Security",
+          "Secure media storage and delivery with Cloudflare R2",
+          "Protected administrator access, audit trail, and analytics"
+        ]
+      },
       "door-sandbox": {
         "title": "Door Calculation Sandbox",
         "description": "An isolated development environment where new features are built and tested before moving to production.\n\nIt serves as an engineering sandbox for metal door calculation algorithms, API testing, and business logic validation.",

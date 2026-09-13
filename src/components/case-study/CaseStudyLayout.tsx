@@ -47,7 +47,7 @@ export function CaseStudyHeader({
 }) {
   return (
     <Reveal className="mt-10 border-b border-ink-line pb-10">
-      <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">
+      <p className="meta-readable font-medium uppercase text-accent">
         {eyebrow}
       </p>
       <h1 className="mt-4 font-display text-3xl font-semibold tracking-tight text-chalk sm:text-4xl md:text-[2.75rem] md:leading-[1.1]">
@@ -85,7 +85,7 @@ export function CaseStudyList({ items }: { items: string[] }) {
   return (
     <ul className="space-y-3">
       {items.map((item, index) => (
-        <li key={`${item}-${index}`} className="flex gap-3 text-sm text-mist sm:text-base">
+        <li key={`${item}-${index}`} className="list-readable flex gap-3">
           <span className="mt-2 h-px w-4 shrink-0 bg-accent" aria-hidden="true" />
           <span>{item}</span>
         </li>
@@ -120,7 +120,7 @@ export function CaseStudyPlaceholder({
         className,
       )}
     >
-      <p className="max-w-sm text-sm leading-relaxed text-fog">{label}</p>
+      <p className="max-w-sm text-base leading-[1.7] text-fog">{label}</p>
     </div>
   );
 }
@@ -146,7 +146,7 @@ export function CaseStudyGallery({
 export function CaseStudyNotice({ children }: { children: ReactNode }) {
   return (
     <Reveal className="mt-14 border border-ink-line bg-ink-soft/60 px-6 py-5 sm:px-8">
-      <p className="text-sm leading-relaxed text-mist sm:text-base">{children}</p>
+      <p className="copy-readable">{children}</p>
     </Reveal>
   );
 }

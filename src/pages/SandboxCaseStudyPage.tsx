@@ -26,7 +26,7 @@ export function SandboxCaseStudyPage() {
       />
 
       <CaseStudySection title={t('caseStudy.sandbox.overviewTitle')}>
-        <p className="max-w-3xl whitespace-pre-line text-base leading-relaxed text-fog">
+        <p className="copy-readable measure-readable whitespace-pre-line">
           {t('caseStudy.sandbox.overview')}
         </p>
       </CaseStudySection>
@@ -44,7 +44,7 @@ export function SandboxCaseStudyPage() {
       </CaseStudySection>
 
       <CaseStudySection title={t('caseStudy.sandbox.galleryTitle')}>
-        <p className="mb-5 text-sm text-fog">{t('caseStudy.sandbox.galleryNote')}</p>
+        <p className="mb-5 text-base leading-[1.7] text-fog">{t('caseStudy.sandbox.galleryNote')}</p>
         <CaseStudyGallery count={4} label={t('caseStudy.placeholderMedia')} />
       </CaseStudySection>
 

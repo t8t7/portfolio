@@ -31,43 +31,44 @@ export function Hero() {
           className="h-full w-full object-cover object-center"
           fetchPriority="high"
         />
-        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,9,0.55)_0%,rgba(7,8,9,0.72)_45%,rgba(7,8,9,0.92)_100%)]" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,8,9,0.55)_100%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(7,8,9,0.48)_0%,rgba(7,8,9,0.58)_45%,rgba(7,8,9,0.84)_100%)]" />
+        <div className="absolute inset-0 hidden bg-[linear-gradient(90deg,rgba(7,8,9,0.72)_0%,rgba(7,8,9,0.5)_40%,rgba(7,8,9,0.12)_68%,transparent_88%)] md:block" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(7,8,9,0.35)_100%)]" />
       </motion.div>
 
       <div className="container-page relative z-10 w-full">
         <motion.div
-          className="max-w-3xl"
+          className="max-w-3xl [text-shadow:0_1px_2px_rgba(0,0,0,0.72)]"
           variants={staggerContainer}
           initial="hidden"
           animate="visible"
         >
           <motion.h1
             variants={fadeUp}
-            className="font-display text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-[0.95] tracking-tight text-chalk"
+            className="font-display text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-[1.02] tracking-tight text-chalk"
           >
             {t('profile.name')}
           </motion.h1>
 
           <motion.ul
             variants={fadeUp}
-            className="mt-5 flex flex-col gap-1.5 sm:gap-2"
+            className="mt-6 flex flex-col gap-2 sm:gap-2.5"
           >
             {titles.map((title, index) => (
               <li
                 key={`hero-title-${index}`}
-                className="font-display text-lg font-medium tracking-tight text-mist sm:text-xl md:text-2xl"
+                className="font-display text-lg font-medium leading-[1.4] tracking-tight text-chalk/90 sm:text-xl md:text-2xl"
               >
                 {title}
               </li>
             ))}
           </motion.ul>
 
-          <motion.div variants={fadeUp} className="mt-7 max-w-2xl space-y-4">
+          <motion.div variants={fadeUp} className="mt-8 max-w-[65ch] space-y-5">
             {description.map((paragraph, index) => (
               <p
                 key={`hero-description-${index}`}
-                className="text-base leading-relaxed text-fog sm:text-lg"
+                className="text-[1.0625rem] font-normal leading-[1.75] text-mist sm:text-lg sm:leading-[1.75]"
               >
                 {paragraph}
               </p>
@@ -75,7 +76,7 @@ export function Hero() {
           </motion.div>
 
           <motion.div variants={fadeUp} className="mt-8">
-            <p className="mb-3 text-[0.7rem] font-medium uppercase tracking-[0.24em] text-accent-soft">
+            <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-accent-soft">
               {t('hero.openToLabel')}
             </p>
             <ul className="flex flex-wrap gap-2">
@@ -117,7 +118,7 @@ export function Hero() {
         <button
           type="button"
           onClick={() => scrollToSection('about')}
-          className="flex flex-col items-center gap-2 text-[0.65rem] uppercase tracking-[0.28em] text-fog transition-colors hover:text-chalk"
+          className="flex flex-col items-center gap-2 text-xs uppercase tracking-[0.22em] text-mist transition-colors hover:text-chalk"
           aria-label={t('hero.scrollAria')}
         >
           {t('hero.scroll')}

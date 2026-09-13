@@ -47,7 +47,7 @@ export function IspringCaseStudyPage() {
       />
 
       <CaseStudySection title={t('caseStudy.ispring.overviewTitle')}>
-        <p className="max-w-3xl whitespace-pre-line text-base leading-relaxed text-fog">
+        <p className="copy-readable measure-readable whitespace-pre-line">
           {t('caseStudy.ispring.overview')}
         </p>
       </CaseStudySection>
@@ -69,7 +69,7 @@ export function IspringCaseStudyPage() {
       </CaseStudySection>
 
       <CaseStudySection title={t('caseStudy.ispring.certificateTitle')}>
-        <p className="text-sm leading-relaxed text-fog">
+        <p className="copy-readable measure-readable">
           {t('caseStudy.ispring.certificateNote')}
         </p>
       </CaseStudySection>

@@ -41,7 +41,7 @@ export function Skills() {
                   return (
                     <li
                       key={`skills-${category.id}-${index}`}
-                      className="flex gap-3 text-sm leading-relaxed"
+                      className="list-readable flex gap-3"
                     >
                       <span
                         className={cn(
@@ -66,14 +66,14 @@ export function Skills() {
 
               {learning.length > 0 ? (
                 <div className="border-t border-ink-line pt-5">
-                  <p className="mb-3 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-fog">
+                  <p className="meta-readable mb-3 font-medium uppercase text-fog">
                     {t(`skills.categories.${category.id}.learningLabel`)}
                   </p>
                   <ul className="space-y-3">
                     {learning.map((item, index) => (
                       <li
                         key={`skills-${category.id}-learning-${index}`}
-                        className="flex gap-3 text-sm leading-relaxed text-fog"
+                        className="list-readable flex gap-3 text-fog"
                       >
                         <span
                           className="mt-2 h-px w-2.5 shrink-0 bg-accent/70"
@@ -88,14 +88,14 @@ export function Skills() {
 
               {methods.length > 0 ? (
                 <div className="border-t border-ink-line pt-5">
-                  <p className="mb-3 text-[0.65rem] font-medium uppercase tracking-[0.22em] text-fog">
+                  <p className="meta-readable mb-3 font-medium uppercase text-fog">
                     {t(`skills.categories.${category.id}.methodsLabel`)}
                   </p>
                   <ul className="space-y-3">
                     {methods.map((item, index) => (
                       <li
                         key={`skills-${category.id}-methods-${index}`}
-                        className="flex gap-3 text-sm leading-relaxed text-fog"
+                        className="list-readable flex gap-3 text-fog"
                       >
                         <span
                           className="mt-2 h-px w-2.5 shrink-0 bg-accent/70"

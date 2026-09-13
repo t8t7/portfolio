@@ -8,8 +8,8 @@
   --color-ink-raised: #0e1013;
   --color-ink-soft: #15181d;
   --color-ink-line: #242932;
-  --color-fog: #a8b0bc;
-  --color-mist: #d5dae3;
+  --color-fog: #b5bdc8;
+  --color-mist: #dce1e8;
   --color-chalk: #f3f1ec;
   --color-accent: #c2a46b;
   --color-accent-soft: #d4bc8a;
@@ -80,6 +80,42 @@
 @layer utilities {
   .text-balance {
     text-wrap: balance;
+  }
+
+  .copy-readable {
+    font-size: 1rem;
+    line-height: 1.75;
+    letter-spacing: 0.006em;
+    color: var(--color-mist);
+    text-wrap: pretty;
+  }
+
+  .list-readable {
+    font-size: 0.9375rem;
+    line-height: 1.65;
+    letter-spacing: 0.004em;
+    color: var(--color-mist);
+    text-wrap: pretty;
+  }
+
+  .meta-readable {
+    font-size: 0.75rem;
+    line-height: 1.5;
+    letter-spacing: 0.16em;
+  }
+
+  .measure-readable {
+    max-width: 65ch;
+  }
+
+  @media (min-width: 40rem) {
+    .copy-readable {
+      font-size: 1.0625rem;
+    }
+
+    .list-readable {
+      font-size: 1rem;
+    }
   }
 
   .section-pad {

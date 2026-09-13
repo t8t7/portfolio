@@ -24,7 +24,7 @@ export function SectionHeading({
       )}
     >
       {eyebrow ? (
-        <p className="mb-4 font-sans text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">
+        <p className="meta-readable mb-4 font-sans font-medium uppercase text-accent">
           {eyebrow}
         </p>
       ) : null}
@@ -34,7 +34,7 @@ export function SectionHeading({
       {description ? (
         <p
           className={cn(
-            'mt-5 max-w-xl text-base leading-relaxed text-fog sm:text-lg',
+            'copy-readable measure-readable mt-5',
             align === 'center' && 'mx-auto',
           )}
         >

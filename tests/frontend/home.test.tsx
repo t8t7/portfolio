@@ -21,6 +21,12 @@ describe('Home page', () => {
     expect(document.getElementById('recommendations')).toBeTruthy();
     expect(document.getElementById('contact')).toBeTruthy();
     expect(document.getElementById('resume')).toBeTruthy();
+    expect(screen.getByText('«Добрый Папа» — цифровая платформа мебельной студии')).toBeTruthy();
+    expect(
+      screen
+        .getAllByRole('link', { name: 'Открыть проект →' })
+        .some((link) => link.getAttribute('href') === '/api/open-project?project=goodpapa'),
+    ).toBe(true);
   });
 
   it('switches language between RU and EN', async () => {

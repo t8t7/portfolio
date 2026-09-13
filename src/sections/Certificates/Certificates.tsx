@@ -21,7 +21,7 @@ function CertificateCard({
   return (
     <article className="flex h-full flex-col border border-ink-line bg-gradient-to-b from-ink-soft/85 to-ink/45 p-7 sm:p-8 md:p-10">
       <header className="border-b border-ink-line pb-6">
-        <p className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-accent">
+        <p className="meta-readable font-medium uppercase text-accent">
           {t('certificates.documentLabel')}
         </p>
         <h3 className="mt-3 whitespace-pre-line font-display text-2xl font-semibold tracking-tight text-chalk text-balance sm:text-3xl">
@@ -32,21 +32,21 @@ function CertificateCard({
 
       <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm">
         <div>
-          <p className="text-[0.65rem] uppercase tracking-[0.18em] text-fog/70">
+          <p className="meta-readable uppercase text-fog">
             {t('certificates.dateLabel')}
           </p>
           <p className="mt-1 text-mist">{t(`${base}.date`)}</p>
         </div>
         <div className="hidden h-8 w-px bg-ink-line sm:block" aria-hidden="true" />
         <div>
-          <p className="text-[0.65rem] uppercase tracking-[0.18em] text-fog/70">
+          <p className="meta-readable uppercase text-fog">
             {t('certificates.statusLabel')}
           </p>
           <p className="mt-1 text-mist">{t(`${base}.status`)}</p>
         </div>
       </div>
 
-      <p className="mt-6 max-w-2xl text-base leading-relaxed text-mist">
+      <p className="copy-readable measure-readable mt-6">
         {t(`${base}.description`)}
       </p>
 

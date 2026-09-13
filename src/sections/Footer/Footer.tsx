@@ -15,7 +15,7 @@ export function Footer() {
             <p className="font-display text-2xl font-semibold tracking-tight text-chalk">
               {t('profile.name')}
             </p>
-            <p className="mt-3 max-w-md text-sm leading-relaxed text-fog">
+            <p className="mt-3 max-w-md text-base leading-[1.7] text-mist">
               {t('footer.note')}
             </p>
             <SocialLinks links={socialLinks} className="mt-8" />
@@ -26,13 +26,13 @@ export function Footer() {
               <p className="mb-4 text-xs uppercase tracking-[0.2em] text-fog">
                 {t('footer.navigate')}
               </p>
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {navigation.slice(0, 4).map((item) => (
                   <li key={item.id}>
                     <button
                       type="button"
                       onClick={() => scrollToSection(item.id)}
-                      className="text-sm text-mist transition-colors hover:text-accent-soft"
+                      className="text-base leading-relaxed text-mist transition-colors hover:text-accent-soft"
                     >
                       {t(`nav.${item.id}`)}
                     </button>
@@ -44,13 +44,13 @@ export function Footer() {
               <p className="mb-4 text-xs uppercase tracking-[0.2em] text-fog">
                 {t('footer.more')}
               </p>
-              <ul className="space-y-2">
+              <ul className="space-y-2.5">
                 {navigation.slice(4).map((item) => (
                   <li key={item.id}>
                     <button
                       type="button"
                       onClick={() => scrollToSection(item.id)}
-                      className="text-sm text-mist transition-colors hover:text-accent-soft"
+                      className="text-base leading-relaxed text-mist transition-colors hover:text-accent-soft"
                     >
                       {t(`nav.${item.id}`)}
                     </button>

@@ -3,7 +3,7 @@ import { resolve } from 'node:path';
 
 loadEnv({ path: resolve(process.cwd(), '.env') });
 
-export const PROJECT_KEYS = ['door-soft'] as const;
+export const PROJECT_KEYS = ['door-soft', 'goodpapa'] as const;
 
 export type ProjectRedirectKey = (typeof PROJECT_KEYS)[number];
 
@@ -23,6 +23,7 @@ export function getProjectUrl(project: string): string | undefined {
 
   const urls: Record<ProjectRedirectKey, string | undefined> = {
     'door-soft': readUrl('PROJECT_DOOR_SOFT'),
+    goodpapa: readUrl('PROJECT_GOODPAPA'),
   };
 
   return urls[project as ProjectRedirectKey];

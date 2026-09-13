@@ -17,13 +17,13 @@ export function Resume() {
           />
           <div className="relative grid gap-8 md:grid-cols-[1.4fr_auto] md:items-end">
             <div>
-              <p className="mb-4 text-[0.7rem] font-medium uppercase tracking-[0.28em] text-accent">
+              <p className="meta-readable mb-4 font-medium uppercase text-accent">
                 {t('resume.eyebrow')}
               </p>
               <h2 className="font-display text-3xl font-semibold tracking-tight text-chalk sm:text-4xl">
                 {t('resume.title')}
               </h2>
-              <p className="mt-4 max-w-xl text-base leading-relaxed text-fog">
+              <p className="copy-readable measure-readable mt-4">
                 {t('resume.description')}
               </p>
             </div>

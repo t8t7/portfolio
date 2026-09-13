@@ -54,7 +54,7 @@ export function Recommendations() {
             <StaggerItem key={item.id}>
               <article className="flex h-full flex-col border border-ink-line bg-gradient-to-b from-ink-soft/85 to-ink/45 p-7 sm:p-8">
                 <header className="border-b border-ink-line pb-5">
-                  <p className="text-[0.65rem] font-medium uppercase tracking-[0.22em] text-accent">
+                  <p className="meta-readable font-medium uppercase text-accent">
                     {t('recommendations.documentLabel')}
                   </p>
                   <h3 className="mt-3 font-display text-xl font-semibold tracking-tight text-chalk sm:text-2xl">
@@ -66,11 +66,11 @@ export function Recommendations() {
                 </header>
 
                 <div className="mt-6 flex flex-1 flex-col">
-                  <p className="text-base leading-relaxed text-mist">
+                  <p className="copy-readable">
                     {t(`recommendations.items.${item.id}.summary`)}
                   </p>
 
-                  <p className="mt-6 text-xs font-medium uppercase tracking-[0.18em] text-fog/80">
+                  <p className="meta-readable mt-6 font-medium uppercase text-fog">
                     {t('recommendations.confirmsLabel')}
                   </p>
 
@@ -78,7 +78,7 @@ export function Recommendations() {
                     {points.map((point, index) => (
                       <li
                         key={`${item.id}-point-${index}`}
-                        className="flex gap-3 text-sm leading-relaxed text-mist"
+                        className="list-readable flex gap-3"
                       >
                         <span
                           className="mt-[0.55em] h-1 w-1 shrink-0 rounded-full bg-accent/70"

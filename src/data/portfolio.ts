@@ -82,6 +82,16 @@ export const projectsMeta: ProjectMeta[] = [
     },
   },
   {
+    id: 'goodpapa',
+    year: '2026',
+    tags: ['Astro', 'TypeScript', 'Supabase', 'Cloudflare R2', 'Telegram Mini App'],
+    cta: {
+      type: 'external',
+      labelKey: 'openProject',
+      projectKey: 'goodpapa',
+    },
+  },
+  {
     id: 'door-sandbox',
     year: '2026',
     tags: ['Python', 'REST API', 'Docker', 'PostgreSQL'],

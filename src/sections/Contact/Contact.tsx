@@ -223,7 +223,7 @@ export function Contact() {
                 {submitting ? t('contact.form.sending') : t('contact.form.submit')}
               </Button>
               {statusKey ? (
-                <p className="whitespace-pre-line text-sm text-fog" role="status">
+                <p className="whitespace-pre-line text-base leading-relaxed text-mist" role="status">
                   {t(`contact.status.${statusKey}`)}
                 </p>
               ) : null}

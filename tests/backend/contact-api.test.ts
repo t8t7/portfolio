@@ -218,3 +218,30 @@ describe('POST /api/contact', () => {
     expect(telegramMocks.sendTelegramNotification).toHaveBeenCalled();
   });
 });
+
+describe('GET /api/open-project', () => {
+  it('redirects GoodPapa through the server-side project allowlist', async () => {
+    const previousUrl = process.env.PROJECT_GOODPAPA;
+    process.env.PROJECT_GOODPAPA = 'https://goodpapa12.com';
+
+    try {
+      const response = await request(createApp()).get('/api/open-project?project=goodpapa');
+
+      expect(response.status).toBe(302);
+      expect(response.headers.location).toBe('https://goodpapa12.com');
+    } finally {
+      if (previousUrl === undefined) {
+        delete process.env.PROJECT_GOODPAPA;
+      } else {
+        process.env.PROJECT_GOODPAPA = previousUrl;
+      }
+    }
+  });
+
+  it('rejects unknown project keys', async () => {
+    const response = await request(createApp()).get('/api/open-project?project=unknown');
+
+    expect(response.status).toBe(404);
+    expect(response.body).toEqual({ ok: false, error: 'not_found' });
+  });
+});

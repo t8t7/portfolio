@@ -53,7 +53,7 @@ export interface ProjectMeta {
     type: 'external' | 'internal' | 'none';
     labelKey: 'openProject' | 'details';
     /** Server redirect key for type: external */
-    projectKey?: 'door-soft';
+    projectKey?: 'door-soft' | 'goodpapa';
     /** In-app route for type: internal */
     href?: string;
   };
