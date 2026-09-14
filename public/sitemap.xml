@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://antonfedotov.com/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/en/</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/python-backend-developer</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/python-backend-developer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/python-backend-developer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/python-backend-developer" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/en/python-backend-developer</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/python-backend-developer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/python-backend-developer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/python-backend-developer" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/engineer-designer</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/engineer-designer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/engineer-designer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/engineer-designer" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/en/engineer-designer</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/engineer-designer" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/engineer-designer" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/engineer-designer" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/projects/sandbox</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/projects/sandbox" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/projects/sandbox" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/projects/sandbox" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/en/projects/sandbox</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/projects/sandbox" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/projects/sandbox" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/projects/sandbox" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/projects/ispring-testing</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/projects/ispring-testing" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/projects/ispring-testing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/projects/ispring-testing" />
+  </url>
+  <url>
+    <loc>https://antonfedotov.com/en/projects/ispring-testing</loc>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://antonfedotov.com/projects/ispring-testing" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://antonfedotov.com/en/projects/ispring-testing" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://antonfedotov.com/projects/ispring-testing" />
+  </url>
+</urlset>

@@ -1,4 +1,5 @@
 import { useTranslation } from 'react-i18next';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { changeLanguage } from '@/i18n';
 import {
   LANGUAGE_LABELS,
@@ -7,6 +8,7 @@ import {
   isAppLanguage,
 } from '@/i18n/config';
 import { cn } from '@/utils';
+import { getLocalizedPath } from '@/seo/config';
 
 interface LanguageSwitcherProps {
   className?: string;
@@ -14,11 +16,18 @@ interface LanguageSwitcherProps {
 
 export function LanguageSwitcher({ className }: LanguageSwitcherProps) {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const navigate = useNavigate();
   const active = isAppLanguage(i18n.language) ? i18n.language : 'ru';
 
   const onSelect = (language: AppLanguage) => {
     if (language === active) return;
-    void changeLanguage(language);
+    void changeLanguage(language).then(() => {
+      navigate({
+        pathname: getLocalizedPath(location.pathname, language),
+        hash: location.hash,
+      });
+    });
   };
 
   return (

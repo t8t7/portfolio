@@ -12,7 +12,7 @@ export function CaseStudyShell({
   children: ReactNode;
   className?: string;
 }) {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -20,7 +20,7 @@ export function CaseStudyShell({
         <div className="container-page max-w-5xl">
           <Reveal>
             <Link
-              to="/#projects"
+              to={i18n.language === 'en' ? '/en/#projects' : '/#projects'}
               className="inline-flex text-sm font-medium text-fog transition-colors hover:text-accent-soft"
             >
               {t('caseStudy.back')}

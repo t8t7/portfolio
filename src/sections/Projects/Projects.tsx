@@ -12,7 +12,7 @@ function ProjectCta({
 }: {
   projectId: string;
 }) {
-  const { t } = useLocale();
+  const { t, i18n } = useLocale();
   const project = projectsMeta.find((item) => item.id === projectId);
   if (!project || project.cta.type === 'none') return null;
 
@@ -34,8 +34,9 @@ function ProjectCta({
   }
 
   if (project.cta.type === 'internal' && project.cta.href) {
+    const href = i18n.language === 'en' ? `/en${project.cta.href}` : project.cta.href;
     return (
-      <Link to={project.cta.href} className={className}>
+      <Link to={href} className={className}>
         {label}
       </Link>
     );
@@ -45,7 +46,7 @@ function ProjectCta({
 }
 
 export function Projects() {
-  const { t, tList } = useLocale();
+  const { t } = useLocale();
 
   return (
     <Section id="projects">
@@ -57,8 +58,6 @@ export function Projects() {
 
       <Stagger className="grid gap-6 lg:grid-cols-2">
         {projectsMeta.map((project, index) => {
-          const highlights = tList(`projects.items.${project.id}.highlights`);
-
           return (
             <StaggerItem
               key={project.id}
@@ -76,25 +75,35 @@ export function Projects() {
                 <h3 className="mt-4 font-display text-2xl font-semibold tracking-tight text-chalk sm:text-3xl">
                   {t(`projects.items.${project.id}.title`)}
                 </h3>
-                <p className="copy-readable measure-readable mt-4 whitespace-pre-line">
-                  {t(`projects.items.${project.id}.description`)}
-                </p>
+                <p className="copy-readable measure-readable mt-4">{t(`projects.items.${project.id}.summary`)}</p>
               </div>
 
               <div className={cn(project.featured && index === 0 && 'lg:pt-10')}>
-                <ul className="mt-6 space-y-3 lg:mt-0">
-                  {highlights.map((highlight, highlightIndex) => (
-                    <li
-                      key={`${project.id}-highlight-${highlightIndex}`}
-                      className="list-readable flex gap-3"
-                    >
-                      <span className="mt-2 h-px w-4 shrink-0 bg-accent" aria-hidden="true" />
-                      <span>{highlight}</span>
-                    </li>
+                <dl className="mt-7 space-y-5 lg:mt-0">
+                  {(['task', 'solution', 'result'] as const).map((field) => (
+                    <div key={field} className="border-l border-accent/45 pl-4">
+                      <dt className="meta-readable font-medium uppercase text-accent-soft">
+                        {t(`projects.fields.${field}`)}
+                      </dt>
+                      <dd className="list-readable mt-1.5">{t(`projects.items.${project.id}.${field}`)}</dd>
+                    </div>
                   ))}
-                </ul>
+                </dl>
 
-                <div className="mt-6 flex flex-wrap gap-2">
+                <div className="mt-7">
+                  <p className="meta-readable mb-3 font-medium uppercase text-fog">{t('projects.fields.deliverables')}</p>
+                  <ul className="flex flex-wrap gap-2">
+                    {project.deliverables.map((item) => (
+                      <li key={item} className="border border-accent/25 bg-accent/5 px-3 py-1.5 text-xs text-mist">
+                        {t(`projects.deliverables.${item}`)}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                <div className="mt-7">
+                  <p className="meta-readable mb-3 font-medium uppercase text-fog">{t('projects.fields.stack')}</p>
+                  <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
@@ -103,6 +112,7 @@ export function Projects() {
                       {tag}
                     </span>
                   ))}
+                  </div>
                 </div>
 
                 <div className="mt-8 flex flex-wrap gap-4">

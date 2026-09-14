@@ -16,18 +16,11 @@ export function Skills() {
         description={t('skills.description')}
       />
 
-      <Stagger className="grid gap-10 md:grid-cols-3">
+      <Stagger className="grid gap-px overflow-hidden border border-ink-line bg-ink-line sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
         {skillsMeta.map((category) => {
           const skills = tList(`skills.categories.${category.id}.skills`);
-          const learning = category.hasLearning
-            ? tList(`skills.categories.${category.id}.learning`)
-            : [];
-          const methods = category.hasMethods
-            ? tList(`skills.categories.${category.id}.methods`)
-            : [];
-
           return (
-            <StaggerItem key={category.id} className="space-y-6">
+            <StaggerItem key={category.id} className="space-y-5 bg-ink-soft p-6">
               <h3 className="font-display text-xl font-semibold text-chalk">
                 {t(`skills.categories.${category.id}.title`)}
               </h3>
@@ -64,49 +57,6 @@ export function Skills() {
                 })}
               </ul>
 
-              {learning.length > 0 ? (
-                <div className="border-t border-ink-line pt-5">
-                  <p className="meta-readable mb-3 font-medium uppercase text-fog">
-                    {t(`skills.categories.${category.id}.learningLabel`)}
-                  </p>
-                  <ul className="space-y-3">
-                    {learning.map((item, index) => (
-                      <li
-                        key={`skills-${category.id}-learning-${index}`}
-                        className="list-readable flex gap-3 text-fog"
-                      >
-                        <span
-                          className="mt-2 h-px w-2.5 shrink-0 bg-accent/70"
-                          aria-hidden="true"
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
-
-              {methods.length > 0 ? (
-                <div className="border-t border-ink-line pt-5">
-                  <p className="meta-readable mb-3 font-medium uppercase text-fog">
-                    {t(`skills.categories.${category.id}.methodsLabel`)}
-                  </p>
-                  <ul className="space-y-3">
-                    {methods.map((item, index) => (
-                      <li
-                        key={`skills-${category.id}-methods-${index}`}
-                        className="list-readable flex gap-3 text-fog"
-                      >
-                        <span
-                          className="mt-2 h-px w-2.5 shrink-0 bg-accent/70"
-                          aria-hidden="true"
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
             </StaggerItem>
           );
         })}

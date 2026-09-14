@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import { useLocale } from '@/hooks';
-import heroBackground from '@/assets/images/hero-background.webp';
+import heroBackground640 from '@/assets/images/responsive/hero-background-640.webp';
+import heroBackground1280 from '@/assets/images/responsive/hero-background-1280.webp';
+import heroBackground1920 from '@/assets/images/responsive/hero-background-1920.webp';
 import { socialLinks } from '@/data/portfolio';
 import { Button } from '@/components/ui/Button';
 import { SocialLinks } from '@/components/ui/SocialLinks';
@@ -9,9 +11,7 @@ import { fadeIn, fadeUp, staggerContainer } from '@/utils/motion';
 
 export function Hero() {
   const { t, tList } = useLocale();
-  const titles = tList('hero.titles');
-  const description = tList('hero.description');
-  const openTo = tList('hero.openTo');
+  const stack = tList('hero.stack');
 
   return (
     <section
@@ -25,7 +25,11 @@ export function Hero() {
         animate="visible"
       >
         <img
-          src={heroBackground}
+          src={heroBackground1280}
+          srcSet={`${heroBackground640} 640w, ${heroBackground1280} 1280w, ${heroBackground1920} 1920w`}
+          sizes="100vw"
+          width={1920}
+          height={1072}
           alt=""
           aria-hidden="true"
           className="h-full w-full object-cover object-center"
@@ -43,49 +47,39 @@ export function Hero() {
           initial="hidden"
           animate="visible"
         >
-          <motion.h1
+          <motion.p
             variants={fadeUp}
-            className="font-display text-[clamp(2.75rem,8vw,5.5rem)] font-bold leading-[1.02] tracking-tight text-chalk"
+            className="meta-readable mb-4 font-medium uppercase text-accent-soft"
           >
             {t('profile.name')}
+          </motion.p>
+
+          <motion.p
+            variants={fadeUp}
+            className="font-display text-xl font-semibold tracking-tight text-chalk/90 sm:text-2xl"
+          >
+            {t('profile.title')}
+          </motion.p>
+
+          <motion.h1
+            variants={fadeUp}
+            className="mt-5 max-w-4xl font-display text-[clamp(2.35rem,7vw,5rem)] font-bold leading-[1.04] tracking-tight text-chalk text-balance"
+          >
+            {t('hero.headline')}
           </motion.h1>
 
-          <motion.ul
-            variants={fadeUp}
-            className="mt-6 flex flex-col gap-2 sm:gap-2.5"
-          >
-            {titles.map((title, index) => (
-              <li
-                key={`hero-title-${index}`}
-                className="font-display text-lg font-medium leading-[1.4] tracking-tight text-chalk/90 sm:text-xl md:text-2xl"
-              >
-                {title}
-              </li>
-            ))}
-          </motion.ul>
-
-          <motion.div variants={fadeUp} className="mt-8 max-w-[65ch] space-y-5">
-            {description.map((paragraph, index) => (
-              <p
-                key={`hero-description-${index}`}
-                className="text-[1.0625rem] font-normal leading-[1.75] text-mist sm:text-lg sm:leading-[1.75]"
-              >
-                {paragraph}
-              </p>
-            ))}
-          </motion.div>
+          <motion.p variants={fadeUp} className="mt-6 max-w-[62ch] text-lg leading-relaxed text-mist sm:text-xl">
+            {t('hero.description')}
+          </motion.p>
 
           <motion.div variants={fadeUp} className="mt-8">
-            <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-accent-soft">
-              {t('hero.openToLabel')}
-            </p>
             <ul className="flex flex-wrap gap-2">
-              {openTo.map((role, index) => (
+              {stack.map((technology) => (
                 <li
-                  key={`hero-open-to-${index}`}
+                  key={technology}
                   className="border border-ink-line/90 bg-ink/30 px-3 py-1.5 text-sm text-mist backdrop-blur-sm"
                 >
-                  {role}
+                  {technology}
                 </li>
               ))}
             </ul>
@@ -100,6 +94,14 @@ export function Hero() {
             </Button>
             <Button variant="secondary" onClick={() => scrollToSection('contact')}>
               {t('hero.ctaSecondary')}
+            </Button>
+            <Button
+              variant="ghost"
+              as="a"
+              href="/resume/Anton_Fedotov_Resume.pdf"
+              download
+            >
+              {t('hero.ctaResume')}
             </Button>
           </motion.div>
 
@@ -117,7 +119,7 @@ export function Hero() {
       >
         <button
           type="button"
-          onClick={() => scrollToSection('about')}
+          onClick={() => scrollToSection('capabilities')}
           className="flex flex-col items-center gap-2 text-xs uppercase tracking-[0.22em] text-mist transition-colors hover:text-chalk"
           aria-label={t('hero.scrollAria')}
         >

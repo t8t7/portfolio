@@ -102,6 +102,7 @@ export function Experience() {
             );
             const location = t(`experience.items.${item.id}.location`);
             const hasLocation = Boolean(location && location.trim());
+            const summary = t(`experience.items.${item.id}.summary`);
 
             return (
               <StaggerItem key={item.id}>
@@ -129,6 +130,7 @@ export function Experience() {
                   </div>
 
                   <div>
+                    <p className="copy-readable measure-readable mb-6">{summary}</p>
                     <p className="meta-readable mb-4 font-medium uppercase text-fog">
                       {t('experience.responsibilitiesLabel')}
                     </p>

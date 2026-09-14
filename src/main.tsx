@@ -5,6 +5,7 @@ import App from './App';
 import '@/styles/globals.css';
 
 const rootElement = document.getElementById('root');
+document.getElementById('seo-static')?.remove();
 
 if (!rootElement) {
   throw new Error('Root element #root not found');

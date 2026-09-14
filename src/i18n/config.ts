@@ -28,6 +28,14 @@ export function getStoredLanguage(): AppLanguage {
   return DEFAULT_LANGUAGE;
 }
 
+export function getInitialLanguage(): AppLanguage {
+  if (typeof window === 'undefined') return DEFAULT_LANGUAGE;
+  if (window.location.pathname === '/en' || window.location.pathname.startsWith('/en/')) {
+    return 'en';
+  }
+  return DEFAULT_LANGUAGE;
+}
+
 export function persistLanguage(language: AppLanguage): void {
   window.localStorage.setItem(LANGUAGE_STORAGE_KEY, language);
 }

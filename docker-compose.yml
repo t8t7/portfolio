@@ -15,6 +15,7 @@ services:
       # Enable when the container sits behind Nginx/Caddy/Traefik on the VPS.
       TRUST_PROXY: "${TRUST_PROXY:-1}"
       PUBLIC_HOST: "${PUBLIC_HOST:-}"
+      PUBLIC_ORIGIN: "${PUBLIC_ORIGIN:-https://antonfedotov.com}"
       PROFILE_GITHUB: "${PROFILE_GITHUB:-}"
       PROFILE_HH: "${PROFILE_HH:-}"
       PROFILE_TELEGRAM: "${PROFILE_TELEGRAM:-}"
@@ -38,7 +39,7 @@ services:
           "CMD",
           "node",
           "-e",
-          "fetch('http://127.0.0.1:3000/').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
+          "fetch('http://127.0.0.1:3000/healthz').then((r)=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))",
         ]
       interval: 30s
       timeout: 5s

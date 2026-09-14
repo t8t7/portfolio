@@ -15,6 +15,7 @@ import { Reveal } from '@/components/common/Reveal';
 import { Button } from '@/components/ui/Button';
 import { TextArea, TextField } from '@/components/ui/TextField';
 import { SocialLinks } from '@/components/ui/SocialLinks';
+import { getOpenProfilePath } from '@/api/openProfile';
 
 interface FormState {
   name: string;
@@ -135,13 +136,25 @@ export function Contact() {
             className="mb-8 md:mb-10"
           />
 
-          <Reveal className="mt-2">
+          <Reveal className="mt-2 space-y-6">
+            <p className="meta-readable font-medium uppercase text-fog">{t('contact.discussLabel')}</p>
+            <p className="copy-readable">{t('contact.discuss')}</p>
+            <div className="flex flex-wrap gap-3">
+              <Button as="a" href={getOpenProfilePath('telegram')} target="_blank" rel="noopener noreferrer">
+                Telegram
+              </Button>
+              <Button variant="secondary" as="a" href="#contact-form">Email</Button>
+              <Button variant="secondary" as="a" href={getOpenProfilePath('github')} target="_blank" rel="noopener noreferrer">
+                GitHub
+              </Button>
+            </div>
             <SocialLinks links={socialLinks} />
           </Reveal>
         </div>
 
         <Reveal>
           <form
+            id="contact-form"
             onSubmit={onSubmit}
             className="relative space-y-5 border border-ink-line bg-ink-soft/50 p-6 sm:p-8"
             noValidate

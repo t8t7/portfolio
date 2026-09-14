@@ -1,5 +1,8 @@
 export type SectionId =
   | 'hero'
+  | 'capabilities'
+  | 'services'
+  | 'production'
   | 'about'
   | 'experience'
   | 'skills'
@@ -32,7 +35,7 @@ export interface ExperienceMeta {
 }
 
 export interface SkillCategoryMeta {
-  id: 'engineering' | 'backend' | 'qa';
+  id: 'backend' | 'databases' | 'engineering' | 'infrastructure' | 'development' | 'testing';
   hasLearning?: boolean;
   hasMethods?: boolean;
   primarySkill?: string;
@@ -42,6 +45,7 @@ export interface ProjectMeta {
   id: string;
   year: string;
   tags: string[];
+  deliverables: string[];
   featured?: boolean;
   /**
    * CTA behavior:

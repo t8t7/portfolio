@@ -6,11 +6,14 @@ import { useScrolled } from '@/hooks';
 import { scrollToSection, cn } from '@/utils';
 import { Button } from '@/components/ui/Button';
 import { LanguageSwitcher } from '@/components/common/LanguageSwitcher';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export function Navbar() {
   const { t } = useTranslation();
   const scrolled = useScrolled();
   const [open, setOpen] = useState(false);
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     document.body.style.overflow = open ? 'hidden' : '';
@@ -21,7 +24,11 @@ export function Navbar() {
 
   const onNavigate = (id: string) => {
     setOpen(false);
-    scrollToSection(id);
+    if (location.pathname === '/' || location.pathname === '/en/') {
+      scrollToSection(id);
+      return;
+    }
+    navigate(`${location.pathname.startsWith('/en/') ? '/en/' : '/'}#${id}`);
   };
 
   return (
@@ -33,7 +40,7 @@ export function Navbar() {
           : 'border-b border-transparent bg-transparent',
       )}
     >
-      <div className="container-page flex h-16 items-center justify-between gap-3 md:h-[4.5rem]">
+      <div className="mx-auto flex h-16 w-[min(1440px,calc(100%-2.5rem))] items-center justify-between gap-4 md:h-[4.5rem]">
         <button
           type="button"
           onClick={() => scrollToSection('hero')}
@@ -42,7 +49,7 @@ export function Navbar() {
           {t('profile.firstName')}
         </button>
 
-        <nav className="hidden min-w-0 items-center justify-center gap-4 xl:flex 2xl:gap-6" aria-label={t('nav.primary')}>
+        <nav className="hidden min-w-0 items-center justify-center gap-5 2xl:flex" aria-label={t('nav.primary')}>
           {navigation.map((item) => (
             <button
               key={item.id}
@@ -55,7 +62,7 @@ export function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden shrink-0 items-center gap-3 xl:flex">
+        <div className="hidden shrink-0 items-center gap-3 2xl:flex">
           <LanguageSwitcher />
           <Button
             variant="secondary"
@@ -66,7 +73,7 @@ export function Navbar() {
           </Button>
         </div>
 
-        <div className="flex items-center gap-3 xl:hidden">
+        <div className="flex items-center gap-3 2xl:hidden">
           <LanguageSwitcher />
           <button
             type="button"
@@ -107,7 +114,7 @@ export function Navbar() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -8 }}
             transition={{ duration: 0.25 }}
-            className="border-t border-ink-line bg-ink/95 backdrop-blur-xl xl:hidden"
+            className="border-t border-ink-line bg-ink/95 backdrop-blur-xl 2xl:hidden"
           >
             <nav className="container-page flex flex-col gap-1 py-6" aria-label={t('nav.mobile')}>
               {navigation.map((item) => (

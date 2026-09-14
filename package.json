@@ -5,7 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "tsc --noEmit && vite build && tsx scripts/prerender.ts && tsx scripts/verify-seo.ts",
+    "seo:verify": "tsx scripts/verify-seo.ts",
     "preview": "vite preview",
     "start": "tsx server/index.ts",
     "typecheck": "tsc --noEmit && tsc -p tsconfig.node.json --noEmit",

@@ -86,6 +86,31 @@ export function createApp() {
     app.set('trust proxy', 1);
   }
 
+  app.get('/healthz', (_req, res) => {
+    res.status(200).json({ ok: true });
+  });
+
+  app.use((req, res, next) => {
+    const configuredOrigin = process.env.PUBLIC_ORIGIN?.trim();
+    if (!configuredOrigin || req.path === '/healthz') {
+      next();
+      return;
+    }
+
+    try {
+      const origin = new URL(configuredOrigin);
+      const requestHost = (req.headers.host || '').toLowerCase();
+      if (req.protocol !== origin.protocol.replace(':', '') || requestHost !== origin.host.toLowerCase()) {
+        res.redirect(308, `${origin.origin}${req.originalUrl}`);
+        return;
+      }
+    } catch {
+      // Invalid configuration must not make the application unavailable.
+    }
+
+    next();
+  });
+
   app.use(createSecurityMiddleware());
 
   app.use((_req, res, next) => {

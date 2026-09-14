@@ -1,7 +1,33 @@
 {
   "meta": {
-    "title": "Anton Fedotov | Python Backend Developer",
-    "description": "Portfolio of Anton Fedotov — Mechanical Design Engineer transitioning into Python Backend Development and QA."
+    "title": "Anton Fedotov — Python Developer & Mechanical Design Engineer",
+    "description": "Anton Fedotov — Python Backend Developer and Mechanical Design Engineer. Software solutions, engineering design, production automation, APIs and databases.",
+    "routes": {
+      "home": {
+        "title": "Anton Fedotov — Python Developer & Mechanical Design Engineer",
+        "description": "Anton Fedotov is a Python Backend Developer and Mechanical Design Engineer building software, engineering automation, APIs and database solutions."
+      },
+      "pythonBackend": {
+        "title": "Python Backend Developer — Anton Fedotov",
+        "description": "Python backend development with FastAPI, REST APIs, PostgreSQL, Docker, testing and VPS deployment. Verified projects and experience by Anton Fedotov."
+      },
+      "engineeringDesign": {
+        "title": "SolidWorks Mechanical Design Engineer — Anton Fedotov",
+        "description": "Mechanical design engineer with manufacturing experience in SolidWorks, 3D models, drawings, engineering documentation and production support."
+      },
+      "sandbox": {
+        "title": "Door Calculation Sandbox — Python Engineering Automation",
+        "description": "Anton Fedotov's isolated environment for developing and validating REST APIs, metal door calculation algorithms and manufacturing business logic."
+      },
+      "ispring": {
+        "title": "iSpring LMS Testing — Anton Fedotov Case Study",
+        "description": "iSpring LMS testing case study covering REST APIs, Postman, Swagger, SQL, user scenarios, localization and test documentation."
+      },
+      "notFound": {
+        "title": "Page not found — Anton Fedotov",
+        "description": "The requested page could not be found."
+      }
+    }
   },
   "language": {
     "switcherLabel": "Language",
@@ -12,9 +38,12 @@
     "primary": "Primary navigation",
     "mobile": "Mobile navigation",
     "about": "About",
-    "experience": "Experience",
-    "skills": "Skills",
+    "capabilities": "What I build",
+    "services": "Services",
+    "skills": "Stack",
     "projects": "Projects",
+    "experience": "Engineering experience",
+    "production": "Production",
     "certificates": "Certificates",
     "recommendations": "Recommendations",
     "resume": "Resume",
@@ -36,102 +65,121 @@
   "profile": {
     "name": "Anton Fedotov",
     "firstName": "Anton",
-    "title": "Python Backend Developer"
+    "title": "Python Backend Developer / Mechanical Design Engineer"
   },
   "hero": {
     "ctaPrimary": "View Projects",
-    "ctaSecondary": "Contact Me",
+    "ctaSecondary": "Contact",
+    "ctaResume": "Download CV",
     "scroll": "Scroll",
-    "scrollAria": "Scroll to about section",
-    "openToLabel": "Open to opportunities:",
-    "titles": [
-      "Python Backend Developer",
-      "Mechanical Design Engineer",
-      "QA Engineer"
-    ],
-    "description": [
-      "Mechanical Design Engineer with practical experience in product development and engineering management.",
-      "Currently transitioning into Python Backend Development through real personal projects while studying software architecture, APIs, Docker, PostgreSQL, microservices and modern backend technologies.",
-      "My goal is to combine engineering thinking with software engineering to build reliable real-world applications."
-    ],
-    "openTo": [
-      "Python Backend Developer",
-      "Backend Developer",
-      "Junior / Middle Backend Developer",
-      "QA Engineer",
-      "Mechanical Design Engineer"
+    "scrollAria": "Scroll to capabilities",
+    "headline": "I build software solutions and automate engineering workflows",
+    "description": "Hands-on manufacturing experience combined with Python, APIs, databases and automation.",
+    "stack": [
+      "Python",
+      "FastAPI",
+      "PostgreSQL",
+      "Docker",
+      "Linux"
     ]
+  },
+  "capabilities": {
+    "eyebrow": "Capabilities",
+    "title": "What I can build",
+    "description": "Work at the intersection of engineering, software development and real manufacturing.",
+    "items": [
+      { "title": "Backend", "description": "Python, server-side logic and web services." },
+      { "title": "APIs & integrations", "description": "REST APIs, external services and business logic." },
+      { "title": "Engineering design", "description": "3D models, drawings and design documentation." },
+      { "title": "Manufacturing", "description": "Preparing engineering solutions for real production." },
+      { "title": "Automation", "description": "Automating engineering calculations and manufacturing workflows." },
+      { "title": "Production / DevOps", "description": "Docker, VPS, CI/CD, testing and application launch." }
+    ]
+  },
+  "services": {
+    "eyebrow": "Value for your project",
+    "title": "How I can help",
+    "description": "I connect engineering design, manufacturing and software development.",
+    "details": "Learn more →",
+    "items": [
+      { "title": "Backend development", "description": "Server-side logic and web services in Python.", "href": "/en/python-backend-developer" },
+      { "title": "REST APIs", "description": "Clear, reliable interfaces for clients and integrations." },
+      { "title": "PostgreSQL & SQL", "description": "Data structures, queries and storage workflows." },
+      { "title": "Engineering design", "description": "Structures, 3D models, drawings and technical documentation.", "href": "/en/engineer-designer" },
+      { "title": "Production preparation", "description": "Preparing products, materials and manufacturing data." },
+      { "title": "Calculation automation", "description": "Turning engineering logic into software tools." },
+      { "title": "API integrations", "description": "Connecting external services to business workflows." },
+      { "title": "Production", "description": "Docker, CI/CD, VPS, automated tests and HTTPS." }
+    ]
+  },
+  "landingPages": {
+    "pythonBackend": {
+      "eyebrow": "Python Backend Developer",
+      "title": "Python backend development for APIs, business logic and production services",
+      "lead": "I build server-side applications in Python and connect software logic with real business and engineering workflows. This page lists only technologies and projects supported by the portfolio.",
+      "proofTitle": "Verified stack",
+      "proof": ["Python, FastAPI and REST APIs", "PostgreSQL, SQL and Supabase", "Docker, Linux, Nginx and VPS", "GitHub Actions, Vitest, Postman and Swagger"],
+      "workTitle": "What I work on",
+      "work": [
+        { "title": "Backend and REST APIs", "description": "Server-side logic, endpoints, data validation and integrations." },
+        { "title": "Data", "description": "Data structures, SQL queries and PostgreSQL workflows." },
+        { "title": "Automation", "description": "Turning calculation and manufacturing logic into software tools." },
+        { "title": "Production", "description": "Containers, automated checks, HTTPS and VPS deployment." }
+      ],
+      "projectsTitle": "Projects and evidence",
+      "projects": [
+        { "title": "Door Calculation Sandbox", "description": "REST API and calculation algorithms for metal doors.", "href": "/en/projects/sandbox" },
+        { "title": "iSpring LMS testing", "description": "API, SQL, Swagger, Postman and test documentation.", "href": "/en/projects/ispring-testing" }
+      ],
+      "relatedLabel": "Related direction",
+      "relatedHref": "/en/engineer-designer",
+      "relatedText": "Mechanical design and SolidWorks",
+      "contactText": "Discuss a project →",
+      "back": "← Back to portfolio"
+    },
+    "engineeringDesign": {
+      "eyebrow": "Mechanical Design Engineer / SolidWorks",
+      "title": "Mechanical design, 3D models and engineering documentation",
+      "lead": "I have more than four years of manufacturing design experience, from parts and assemblies to production drawings, manufacturing support and leading a design department.",
+      "proofTitle": "Verified experience",
+      "proof": ["SolidWorks, Solid Edge and sheet metal", "Metal structures and steel doors", "Drawings and engineering documentation", "Manufacturing support and quality control"],
+      "workTitle": "Engineering work",
+      "work": [
+        { "title": "3D modelling", "description": "Parts, assemblies, metal structures and sheet-metal products." },
+        { "title": "Engineering documentation", "description": "Production drawings and technical documentation for manufacturing." },
+        { "title": "Production preparation", "description": "Materials and manufacturing data, coordination with production, quality and procurement." },
+        { "title": "Product improvement", "description": "Design revisions, part standardisation and reduction of manufacturing errors." }
+      ],
+      "projectsTitle": "Related work",
+      "projects": [
+        { "title": "Engineering experience", "description": "Design and manufacturing work at Avalon, INTECRON, Spas, Kontakt and Meridium.", "href": "/en/#experience" },
+        { "title": "Door Calculation Sandbox", "description": "An example combining engineering calculations with a Python backend.", "href": "/en/projects/sandbox" }
+      ],
+      "relatedLabel": "Related direction",
+      "relatedHref": "/en/python-backend-developer",
+      "relatedText": "Python backend development",
+      "contactText": "Discuss a project →",
+      "back": "← Back to portfolio"
+    }
+  },
+  "production": {
+    "eyebrow": "Production / DevOps",
+    "title": "I do more than write code — I take applications to production.",
+    "description": "I containerize services, automate checks and delivery, deploy applications to a VPS and make them available over HTTPS.",
+    "skills": ["Docker", "VPS", "CI/CD", "Automated Tests", "HTTPS", "Deployment"]
   },
   "about": {
     "eyebrow": "About",
-    "headline": "Engineering experience and a transition into Backend Development.",
+    "headline": "Engineering and software development in one skill set.",
     "paragraphs": [
-      "My background combines several technical fields: mechanical engineering, CAD design, manufacturing, Python Backend Development, and QA Engineering.",
-      "I have practical engineering experience in production and continue expanding my software engineering skills through real-world personal projects.",
-      "I work with and study REST API, Docker, PostgreSQL, Linux, Git, and Nginx — applying them in practice."
-    ],
-    "highlights": [
-      {
-        "label": "Disciplines",
-        "value": "Engineering\nBackend\nQA"
-      },
-      {
-        "label": "Engineering\nExperience",
-        "value": "4+ Years"
-      },
-      {
-        "label": "Personal Focus\nsince 2022",
-        "value": "Python Backend"
-      },
-      {
-        "label": "Active learning",
-        "value": "Current focus",
-        "stack": [
-          "Microservices",
-          "gRPC",
-          "Docker",
-          "PostgreSQL",
-          "Clean Architecture"
-        ]
-      }
-    ],
-    "skillGroups": [
-      {
-        "id": "engineering",
-        "label": "Engineering",
-        "tags": [
-          "Mechanical Design",
-          "SolidWorks",
-          "Solid Edge",
-          "Manufacturing"
-        ]
-      },
-      {
-        "id": "backend",
-        "label": "Backend",
-        "tags": [
-          "Python",
-          "REST API",
-          "PostgreSQL",
-          "Docker",
-          "Linux",
-          "Git",
-          "Nginx"
-        ]
-      },
-      {
-        "id": "qa",
-        "label": "QA",
-        "tags": [
-          "QA Engineering"
-        ]
-      }
+      "I am a mechanical design engineer with hands-on manufacturing experience and a Python backend developer. I combine engineering thinking with software development — from product design and production tasks to APIs, databases and automation.",
+      "I have worked with metal structures, sheet metal, drawings and design documentation. In software, I take services from backend code and tests through Docker, CI/CD and VPS deployment."
     ]
   },
   "experience": {
-    "eyebrow": "Experience",
-    "title": "Work experience",
-    "description": "4 years 6 months — from Design Engineer to Head of the Design Department.",
+    "eyebrow": "Engineering experience",
+    "title": "Design and manufacturing",
+    "description": "4 years 6 months of hands-on manufacturing experience — from Design Engineer to Head of the Design Department.",
     "responsibilitiesLabel": "Responsibilities",
     "technologiesLabel": "Technologies",
     "items": {
@@ -140,6 +188,7 @@
         "role": "Head of the Design Department",
         "period": "October 2025 — June 2026",
         "location": "",
+        "summary": "Led the design department, designed metal structures and owned documentation quality, manufacturing coordination and product launch.",
         "responsibilities": [
           "Managed the design department and organized the work of design engineers and process engineers.",
           "Designed metal structures.",
@@ -158,6 +207,7 @@
         "role": "Design Engineer",
         "period": "January 2024 — September 2025",
         "location": "Yoshkar-Ola",
+        "summary": "Designed steel doors, prepared drawings and technical documentation, supported manufacturing and managed custom projects.",
         "responsibilities": [
           "Designed steel doors.",
           "Prepared drawings and technical documentation.",
@@ -173,6 +223,7 @@
         "role": "Design Engineer",
         "period": "May 2023 — December 2023",
         "location": "Yoshkar-Ola, dveri-spas.ru",
+        "summary": "Designed and calculated metal door structures, supported manufacturing and updated projects based on testing results.",
         "responsibilities": [
           "Developed design and technical documentation.",
           "Designed and calculated metal door structures.",
@@ -186,6 +237,7 @@
         "role": "Design Engineer",
         "period": "November 2022 — April 2023",
         "location": "",
+        "summary": "Developed and refined structures and drawings in Solid Edge, including sheet metal work.",
         "responsibilities": [
           "Worked in Solid Edge with drawings, refined designs, and developed constructions. Worked with sheet metal."
         ]
@@ -195,6 +247,7 @@
         "role": "Design Engineer",
         "period": "January 2022 — November 2022",
         "location": "",
+        "summary": "Produced design documentation, drawings, process regulations and mechanisms for sheet metal products.",
         "responsibilities": [
           "development and analysis of design documentation;",
           "writing technological regulations;",
@@ -264,125 +317,98 @@
     }
   },
   "skills": {
-    "eyebrow": "Skills",
-    "title": "Engineering • Backend • QA",
-    "description": "Commercial engineering experience combined with practical Backend development and QA skills gained through real projects and continuous learning.",
+    "eyebrow": "Technologies",
+    "title": "Technology stack",
+    "description": "Tools I use in projects, grouped by the job they do.",
     "categories": {
-      "engineering": {
-        "title": "Engineering",
-        "skills": [
-          "4+ years commercial engineering experience",
-          "Engineering Management",
-          "Mechanical Design",
-          "CAD Design",
-          "SolidWorks",
-          "Solid Edge",
-          "Production Engineering",
-          "Technical Documentation"
-        ]
-      },
       "backend": {
         "title": "Backend",
-        "skills": [
-          "Python",
-          "REST API",
-          "PostgreSQL",
-          "Docker",
-          "Git",
-          "Linux",
-          "Nginx"
-        ],
-        "learningLabel": "Currently Learning",
-        "learning": [
-          "Microservices",
-          "gRPC",
-          "Clean Architecture"
-        ]
+        "skills": ["Python", "FastAPI", "REST API"]
       },
-      "qa": {
-        "title": "QA Engineering",
-        "skills": [
-          "Manual Testing",
-          "API Testing",
-          "Postman",
-          "Swagger",
-          "SQL",
-          "DevTools",
-          "Jira",
-          "Xray"
-        ],
-        "methodsLabel": "Testing Methods",
-        "methods": [
-          "Smoke Testing",
-          "Regression Testing",
-          "Sanity Testing"
-        ]
+      "databases": {
+        "title": "Databases",
+        "skills": ["PostgreSQL", "SQL", "Supabase"]
+      },
+      "engineering": {
+        "title": "Engineering / CAD",
+        "skills": ["SolidWorks", "Solid Edge", "ToolBox", "CupCat", "Corel Draw"]
+      },
+      "infrastructure": {
+        "title": "Infrastructure",
+        "skills": ["Docker", "Linux", "VPS", "Nginx"]
+      },
+      "development": {
+        "title": "Development",
+        "skills": ["Git", "GitHub", "GitHub Actions"]
+      },
+      "testing": {
+        "title": "Testing",
+        "skills": ["API Testing", "Vitest", "Postman", "Swagger"]
       }
     }
   },
   "projects": {
     "eyebrow": "Projects",
-    "title": "Real projects built by hand.",
-    "description": "From engineering systems for production automation to Backend development, QA Engineering, and a personal portfolio.",
+    "title": "Selected projects",
+    "description": "Not just technologies, but problems solved and working outcomes.",
     "details": "Learn more →",
     "openProject": "Open project →",
     "live": "Live project →",
     "repo": "Repository →",
+    "fields": {
+      "task": "Challenge",
+      "solution": "Solution",
+      "result": "Outcome",
+      "deliverables": "Delivered",
+      "stack": "Project stack"
+    },
+    "deliverables": {
+      "engineering": "Engineering calculations",
+      "calculations": "Calculations",
+      "manufacturing": "Production preparation",
+      "backend": "Backend",
+      "api": "REST API",
+      "database": "PostgreSQL",
+      "sql": "SQL",
+      "auth": "Authentication",
+      "admin": "Admin panel",
+      "docker": "Docker",
+      "testing": "Testing",
+      "vps": "VPS",
+      "https": "HTTPS"
+    },
     "items": {
       "door-soft": {
         "title": "Door Soft Platform",
-        "description": "A comprehensive automation system for metal door manufacturing.\n\nThe project includes a modern web interface, Backend, REST API, and an engineering calculator for automating production processes.",
-        "role": "Python Backend",
-        "highlights": [
-          "More than 150 REST APIs",
-          "Backend fully written in Python",
-          "Custom project architecture",
-          "Production calculation workflows",
-          "Data preparation for sheet metal nesting",
-          "Deployed on a VPS with Docker and Nginx",
-          "HTTPS, custom domain, and full production deployment"
-        ]
+        "summary": "A system for automating engineering calculations and production preparation for metal doors.",
+        "role": "Engineering + Python + automation",
+        "task": "Automate engineering calculations and manufacturing workflows for metal door production.",
+        "solution": "Combined manufacturing expertise with software development: built a Python backend, over 150 REST API endpoints, an engineering calculator and data preparation for sheet metal nesting.",
+        "result": "A working production platform deployed to a VPS in Docker with Nginx, a custom domain and HTTPS."
       },
       "goodpapa": {
         "title": "Dobry Papa — Furniture Studio Digital Platform",
-        "description": "A commercial full-stack project for a furniture studio: a public catalog website, a secure administration panel, and a standalone Telegram Mini App.\n\nThe platform brings project, photo, video, contact, and company settings management into one digital system.",
+        "summary": "A commercial platform for showcasing work and managing a furniture studio's content.",
         "role": "Full-stack Development",
-        "highlights": [
-          "Responsive public website for the furniture studio",
-          "Administration panel for content management",
-          "Project catalog, photo gallery, and video library",
-          "Telegram Mini App powered by the public API",
-          "Supabase: PostgreSQL, authentication, and Row Level Security",
-          "Secure media storage and delivery with Cloudflare R2",
-          "Protected administrator access, audit trail, and analytics"
-        ]
+        "task": "Bring the public catalog, media, contacts and content management into one digital product.",
+        "solution": "Built a responsive website, secure admin panel and Telegram Mini App; configured Supabase, authentication, RLS and Cloudflare R2.",
+        "result": "A unified commercial platform with project catalog, photo gallery, video library, audit trail and analytics."
       },
       "door-sandbox": {
         "title": "Door Calculation Sandbox",
-        "description": "An isolated development environment where new features are built and tested before moving to production.\n\nIt serves as an engineering sandbox for metal door calculation algorithms, API testing, and business logic validation.",
+        "summary": "An isolated environment for safely building and validating Door Soft Platform features.",
         "role": "Backend Development",
-        "highlights": [
-          "More than 150 REST APIs",
-          "Separate development environment",
-          "New features are verified before production",
-          "Engineering algorithm testing",
-          "Work with calculations and production logic"
-        ]
+        "task": "Validate new calculation algorithms, APIs and business logic before moving them to production.",
+        "solution": "Prepared a separate backend environment with REST APIs, PostgreSQL and Docker for iterative development and testing.",
+        "result": "Changes can be validated in isolation without affecting the production environment."
       },
       "ispring-lms": {
         "title": "iSpring LMS Testing",
-        "description": "A practical project focused on manual testing of a corporate LMS platform.\n\nThe work included functional testing, REST API testing, localization checks, user scenarios, and documentation review.",
+        "summary": "A practical project focused on comprehensive testing of a corporate LMS platform.",
         "role": "QA Engineering",
-        "highlights": [
-          "Manual Testing",
-          "REST API Testing",
-          "Swagger",
-          "Postman",
-          "SQL",
-          "DevTools",
-          "Jira",
-          "Xray"
-        ]
+        "task": "Verify the web interface, REST API, localization, user scenarios and documentation.",
+        "solution": "Performed functional and API testing with Postman, Swagger, SQL, DevTools, Jira and Xray.",
+        "result": "Produced test artifacts and documented defects across critical LMS scenarios."
       }
     }
   },
@@ -534,9 +560,11 @@
     "download": "Download resume"
   },
   "contact": {
-    "eyebrow": "Contact",
-    "headline": "Let’s discuss opportunities.",
-    "description": "Open to Python Backend, QA, and mechanical design roles. Send a message through the form — I will reply when I can.",
+    "eyebrow": "Get in touch",
+    "headline": "Have a role or project in mind?",
+    "description": "Open to Python Backend opportunities and web projects.",
+    "discussLabel": "We can discuss",
+    "discuss": "a role · a project · backend · APIs · automation",
     "email": "Email",
     "phone": "Phone",
     "location": "Location",

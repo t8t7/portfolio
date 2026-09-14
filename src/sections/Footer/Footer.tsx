@@ -2,10 +2,21 @@ import { useTranslation } from 'react-i18next';
 import { navigation, socialLinks } from '@/data/portfolio';
 import { scrollToSection } from '@/utils';
 import { SocialLinks } from '@/components/ui/SocialLinks';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export function Footer() {
   const { t } = useTranslation();
   const year = new Date().getFullYear();
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  const onNavigate = (id: string) => {
+    if (location.pathname === '/' || location.pathname === '/en/') {
+      scrollToSection(id);
+      return;
+    }
+    navigate(`${location.pathname.startsWith('/en/') ? '/en/' : '/'}#${id}`);
+  };
 
   return (
     <footer className="border-t border-ink-line bg-ink-raised/60 pb-10 pt-16">
@@ -31,7 +42,7 @@ export function Footer() {
                   <li key={item.id}>
                     <button
                       type="button"
-                      onClick={() => scrollToSection(item.id)}
+                      onClick={() => onNavigate(item.id)}
                       className="text-base leading-relaxed text-mist transition-colors hover:text-accent-soft"
                     >
                       {t(`nav.${item.id}`)}
@@ -49,7 +60,7 @@ export function Footer() {
                   <li key={item.id}>
                     <button
                       type="button"
-                      onClick={() => scrollToSection(item.id)}
+                      onClick={() => onNavigate(item.id)}
                       className="text-base leading-relaxed text-mist transition-colors hover:text-accent-soft"
                     >
                       {t(`nav.${item.id}`)}

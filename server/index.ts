@@ -1,8 +1,9 @@
 import { createReadStream } from 'node:fs';
-import { readFile, stat } from 'node:fs/promises';
-import { join, extname, resolve, relative, isAbsolute } from 'node:path';
+import { stat } from 'node:fs/promises';
+import { extname, resolve, relative, isAbsolute } from 'node:path';
 import { config as loadEnv } from 'dotenv';
 import { createApp } from './app';
+import { canonicalPathRedirect, pageHtmlPath } from './seoRouting';
 
 loadEnv({ path: resolve(process.cwd(), '.env') });
 
@@ -18,6 +19,8 @@ const MIME: Record<string, string> = {
   '.js': 'text/javascript; charset=utf-8',
   '.css': 'text/css; charset=utf-8',
   '.json': 'application/json; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8',
+  '.xml': 'application/xml; charset=utf-8',
   '.svg': 'image/svg+xml',
   '.png': 'image/png',
   '.jpg': 'image/jpeg',
@@ -95,7 +98,8 @@ async function serveStatic(
     return;
   }
 
-  const safePath = decoded === '/' ? '/index.html' : decoded;
+  const pagePath = pageHtmlPath(decoded);
+  const safePath = pagePath ? `/${pagePath}` : decoded;
   const normalized = safePath.replace(/\\/g, '/');
 
   if (
@@ -130,21 +134,7 @@ async function serveStatic(
     return;
   }
 
-  if (ext && ext !== '.html') {
-    res.status(404).end('Not found');
-    return;
-  }
-
-  try {
-    const fallback = await readFile(join(DIST, 'index.html'));
-    res.status(200);
-    res.setHeader('Content-Type', 'text/html; charset=utf-8');
-    res.setHeader('X-Content-Type-Options', 'nosniff');
-    res.setHeader('Cache-Control', 'no-cache');
-    res.end(fallback);
-  } catch {
-    res.status(404).end('Not found');
-  }
+  res.status(404).type('text/plain').end('Not found');
 }
 
 const app = createApp();
@@ -157,6 +147,14 @@ app.use(async (req, res, next) => {
 
   if (req.path.startsWith('/api/')) {
     next();
+    return;
+  }
+
+  const redirectPath = canonicalPathRedirect(req.path);
+  if (redirectPath) {
+    const queryIndex = req.originalUrl.indexOf('?');
+    const query = queryIndex >= 0 ? req.originalUrl.slice(queryIndex) : '';
+    res.redirect(308, `${redirectPath}${query}`);
     return;
   }
 

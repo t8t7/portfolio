@@ -30,13 +30,13 @@ export const socialLinks: SocialLink[] = [
 ];
 
 export const navigation: NavItem[] = [
-  { id: 'about' },
-  { id: 'experience' },
-  { id: 'skills' },
   { id: 'projects' },
+  { id: 'experience' },
+  { id: 'services' },
+  { id: 'skills' },
+  { id: 'production' },
+  { id: 'about' },
   { id: 'certificates' },
-  { id: 'recommendations' },
-  { id: 'resume' },
   { id: 'contact' },
 ];
 
@@ -64,9 +64,12 @@ export const experienceMeta: ExperienceMeta[] = [
 ];
 
 export const skillsMeta: SkillCategoryMeta[] = [
+  { id: 'backend', primarySkill: 'Python' },
+  { id: 'databases' },
   { id: 'engineering' },
-  { id: 'backend', hasLearning: true, primarySkill: 'Python' },
-  { id: 'qa', hasMethods: true },
+  { id: 'infrastructure' },
+  { id: 'development' },
+  { id: 'testing' },
 ];
 
 export const projectsMeta: ProjectMeta[] = [
@@ -74,6 +77,7 @@ export const projectsMeta: ProjectMeta[] = [
     id: 'door-soft',
     year: '2026',
     tags: ['Python', 'REST API', 'PostgreSQL', 'Docker', 'Nginx'],
+    deliverables: ['engineering', 'calculations', 'manufacturing', 'backend', 'api', 'database', 'docker', 'vps', 'https'],
     featured: true,
     cta: {
       type: 'external',
@@ -85,6 +89,7 @@ export const projectsMeta: ProjectMeta[] = [
     id: 'goodpapa',
     year: '2026',
     tags: ['Astro', 'TypeScript', 'Supabase', 'Cloudflare R2', 'Telegram Mini App'],
+    deliverables: ['api', 'database', 'auth', 'admin'],
     cta: {
       type: 'external',
       labelKey: 'openProject',
@@ -95,6 +100,7 @@ export const projectsMeta: ProjectMeta[] = [
     id: 'door-sandbox',
     year: '2026',
     tags: ['Python', 'REST API', 'Docker', 'PostgreSQL'],
+    deliverables: ['backend', 'api', 'database', 'docker', 'testing'],
     cta: {
       type: 'internal',
       labelKey: 'details',
@@ -105,6 +111,7 @@ export const projectsMeta: ProjectMeta[] = [
     id: 'ispring-lms',
     year: '2026',
     tags: ['Postman', 'Swagger', 'SQL', 'DevTools', 'Jira', 'Xray'],
+    deliverables: ['api', 'sql', 'testing'],
     cta: {
       type: 'internal',
       labelKey: 'details',

@@ -2,7 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import {
   DEFAULT_LANGUAGE,
-  getStoredLanguage,
+  getInitialLanguage,
   LANGUAGE_STORAGE_KEY,
   persistLanguage,
   type AppLanguage,
@@ -15,7 +15,7 @@ void i18n.use(initReactI18next).init({
     ru: { common: ru },
     en: { common: en },
   },
-  lng: getStoredLanguage(),
+  lng: getInitialLanguage(),
   fallbackLng: DEFAULT_LANGUAGE,
   defaultNS: 'common',
   ns: ['common'],
