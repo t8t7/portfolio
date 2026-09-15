@@ -14,6 +14,7 @@ interface LocalizedItem {
   result?: string;
   responsibilities?: string[];
   skills?: string[];
+  href?: string;
 }
 
 interface LocaleData {
@@ -67,13 +68,31 @@ function list(items: string[] | undefined): string {
 
 function cards(items: LocalizedItem[]): string {
   return items
-    .map((item) => `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p></article>`)
+    .map((item) => {
+      const title = item.href
+        ? `<a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a>`
+        : escapeHtml(item.title);
+      return `<article><h3>${title}</h3><p>${escapeHtml(item.description)}</p></article>`;
+    })
     .join('');
 }
 
-function renderHome(locale: LocaleData): string {
-  const projects = Object.values(locale.projects.items)
-    .map((item) => `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.summary)}</p><h4>${escapeHtml(item.task)}</h4><p>${escapeHtml(item.solution)}</p><p>${escapeHtml(item.result)}</p></article>`)
+function projectPath(id: string, language: 'ru' | 'en'): string | undefined {
+  const prefix = language === 'en' ? '/en' : '';
+  if (id === 'door-sandbox') return `${prefix}/projects/sandbox`;
+  if (id === 'ispring-lms') return `${prefix}/projects/ispring-testing`;
+  return undefined;
+}
+
+function renderHome(locale: LocaleData, language: 'ru' | 'en'): string {
+  const projects = Object.entries(locale.projects.items)
+    .map(([id, item]) => {
+      const href = projectPath(id, language);
+      const title = href
+        ? `<a href="${href}">${escapeHtml(item.title)}</a>`
+        : escapeHtml(item.title);
+      return `<article><h3>${title}</h3><p>${escapeHtml(item.summary)}</p><h4>${escapeHtml(item.task)}</h4><p>${escapeHtml(item.solution)}</p><p>${escapeHtml(item.result)}</p></article>`;
+    })
     .join('');
   const experience = Object.values(locale.experience.items)
     .map((item) => `<article><h3>${escapeHtml(item.company)}</h3><p>${escapeHtml(item.role)} · ${escapeHtml(item.period)}</p><p>${escapeHtml(item.summary)}</p>${list(item.responsibilities)}</article>`)
@@ -97,7 +116,11 @@ function stringArray(record: Record<string, unknown>, key: string): string[] {
   return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
 }
 
-function renderCaseStudy(locale: LocaleData, id: 'sandbox' | 'ispring'): string {
+function renderCaseStudy(
+  locale: LocaleData,
+  id: 'sandbox' | 'ispring',
+  language: 'ru' | 'en',
+): string {
   const study = objectValue(locale.caseStudy, id);
   const overview = study.overview;
   const sections = id === 'sandbox'
@@ -108,7 +131,14 @@ function renderCaseStudy(locale: LocaleData, id: 'sandbox' | 'ispring'): string 
     return `<section><h2>${escapeHtml(study[titleKey])}</h2>${list(stringArray(study, key))}</section>`;
   }).join('');
 
-  return `<main><article><p>${escapeHtml(study.eyebrow)}</p><h1>${escapeHtml(study.title)}</h1><p>${escapeHtml(study.role)} · ${escapeHtml(study.year)}</p><section><h2>${escapeHtml(study.overviewTitle)}</h2><p>${escapeHtml(overview)}</p></section>${content}</article></main>`;
+  const prefix = language === 'en' ? '/en' : '';
+  const homePath = language === 'en' ? '/en/' : '/';
+  const otherProject = id === 'sandbox'
+    ? `${prefix}/projects/ispring-testing`
+    : `${prefix}/projects/sandbox`;
+  const navigation = `<nav aria-label="Related pages"><a href="${homePath}">${escapeHtml(locale.profile.name)}</a><a href="${prefix}/python-backend-developer">Python Backend</a><a href="${prefix}/engineer-designer">Engineering</a><a href="${otherProject}">Related project</a></nav>`;
+
+  return `<main>${navigation}<article><p>${escapeHtml(study.eyebrow)}</p><h1>${escapeHtml(study.title)}</h1><p>${escapeHtml(study.role)} · ${escapeHtml(study.year)}</p><section><h2>${escapeHtml(study.overviewTitle)}</h2><p>${escapeHtml(overview)}</p></section>${content}</article></main>`;
 }
 
 function renderLanding(locale: LocaleData, id: 'pythonBackend' | 'engineeringDesign'): string {
@@ -194,10 +224,10 @@ async function main() {
       const metadata = locales[language].meta.routes[route.id];
       const canonical = absoluteUrl(pathname);
       const body = route.id === 'home'
-        ? renderHome(locales[language])
+        ? renderHome(locales[language], language)
         : route.id === 'pythonBackend' || route.id === 'engineeringDesign'
           ? renderLanding(locales[language], route.id)
-          : renderCaseStudy(locales[language], route.id);
+          : renderCaseStudy(locales[language], route.id, language);
       const output = injectStaticContent(setHead(template, {
         language,
         title: metadata.title,

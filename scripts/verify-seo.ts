@@ -13,6 +13,25 @@ function count(content: string, expression: RegExp): number {
   return content.match(expression)?.length ?? 0;
 }
 
+const REQUIRED_INTERNAL_LINKS: Record<string, string[]> = {
+  '/': [
+    '/python-backend-developer',
+    '/engineer-designer',
+    '/projects/sandbox',
+    '/projects/ispring-testing',
+  ],
+  '/en/': [
+    '/en/python-backend-developer',
+    '/en/engineer-designer',
+    '/en/projects/sandbox',
+    '/en/projects/ispring-testing',
+  ],
+  '/projects/sandbox': ['/', '/python-backend-developer', '/engineer-designer'],
+  '/projects/ispring-testing': ['/', '/python-backend-developer'],
+  '/en/projects/sandbox': ['/en/', '/en/python-backend-developer', '/en/engineer-designer'],
+  '/en/projects/ispring-testing': ['/en/', '/en/python-backend-developer'],
+};
+
 async function verifyPage(pathname: string, ruPath: string, enPath: string) {
   const filePath = pathname === '/'
     ? resolve(dist, 'index.html')
@@ -36,6 +55,10 @@ async function verifyPage(pathname: string, ruPath: string, enPath: string) {
   assert(html.includes('id="structured-data" type="application/ld+json"'), `${pathname} missing JSON-LD`);
   assert(html.includes('id="seo-static"'), `${pathname} missing static content`);
   assert(count(html, /<h1>[^<]+<\/h1>/g) === 1, `${pathname} must have one static H1`);
+
+  for (const href of REQUIRED_INTERNAL_LINKS[pathname] ?? []) {
+    assert(html.includes(`href="${href}"`), `${pathname} missing internal link to ${href}`);
+  }
 }
 
 async function main() {
@@ -49,6 +72,8 @@ async function main() {
   assert(robots.includes('Sitemap: https://antonfedotov.com/sitemap.xml'), 'robots.txt must reference sitemap');
 
   const sitemap = await readFile(resolve(dist, 'sitemap.xml'), 'utf8');
+  assert(!sitemap.includes('hreflang='), 'sitemap must not duplicate HTML hreflang annotations');
+  assert(!sitemap.includes('xmlns:xhtml='), 'sitemap must not declare unused XHTML namespace');
   const locations = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
   assert(locations.length === SEO_ROUTES.length * 2, 'sitemap URL count mismatch');
   assert(new Set(locations).size === locations.length, 'sitemap contains duplicate URLs');

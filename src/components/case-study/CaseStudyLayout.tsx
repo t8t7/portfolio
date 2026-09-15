@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Reveal, Stagger, StaggerItem } from '@/components/common/Reveal';
 import { Footer } from '@/sections/Footer';
@@ -13,17 +13,40 @@ export function CaseStudyShell({
   className?: string;
 }) {
   const { t, i18n } = useTranslation();
+  const location = useLocation();
+  const isSandbox = location.pathname.endsWith('/projects/sandbox');
+  const relatedProjectPath = i18n.language === 'en'
+    ? isSandbox ? '/en/projects/ispring-testing' : '/en/projects/sandbox'
+    : isSandbox ? '/projects/ispring-testing' : '/projects/sandbox';
 
   return (
     <>
       <div className={cn('section-pad', className)}>
         <div className="container-page max-w-5xl">
-          <Reveal>
+          <Reveal className="flex flex-wrap items-center gap-x-5 gap-y-2">
             <Link
               to={i18n.language === 'en' ? '/en/#projects' : '/#projects'}
               className="inline-flex text-sm font-medium text-fog transition-colors hover:text-accent-soft"
             >
               {t('caseStudy.back')}
+            </Link>
+            <Link
+              to={i18n.language === 'en' ? '/en/python-backend-developer' : '/python-backend-developer'}
+              className="text-sm font-medium text-fog transition-colors hover:text-accent-soft"
+            >
+              Python Backend
+            </Link>
+            <Link
+              to={i18n.language === 'en' ? '/en/engineer-designer' : '/engineer-designer'}
+              className="text-sm font-medium text-fog transition-colors hover:text-accent-soft"
+            >
+              {t('services.items.3.title')}
+            </Link>
+            <Link
+              to={relatedProjectPath}
+              className="text-sm font-medium text-fog transition-colors hover:text-accent-soft"
+            >
+              {t(isSandbox ? 'caseStudy.ispring.title' : 'caseStudy.sandbox.title')}
             </Link>
           </Reveal>
           {children}
