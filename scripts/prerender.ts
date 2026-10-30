@@ -1,6 +1,10 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { dirname, resolve } from 'node:path';
-import { absoluteUrl, buildStructuredData, SEO_ROUTES } from '../src/seo/config';
+import {
+  absoluteUrl,
+  buildStructuredData,
+  SEO_ROUTES,
+} from '../src/seo/config';
 
 interface LocalizedItem {
   title?: string;
@@ -24,20 +28,23 @@ interface LocaleData {
   projects: { title: string; items: Record<string, LocalizedItem> };
   experience: { title: string; items: Record<string, LocalizedItem> };
   services: { title: string; items: LocalizedItem[] };
-  landingPages: Record<string, {
-    eyebrow: string;
-    title: string;
-    lead: string;
-    proofTitle: string;
-    proof: string[];
-    workTitle: string;
-    work: LocalizedItem[];
-    projectsTitle: string;
-    projects: Array<LocalizedItem & { href: string }>;
-    relatedText: string;
-    relatedHref: string;
-    contactText: string;
-  }>;
+  landingPages: Record<
+    string,
+    {
+      eyebrow: string;
+      title: string;
+      lead: string;
+      proofTitle: string;
+      proof: string[];
+      workTitle: string;
+      work: LocalizedItem[];
+      projectsTitle: string;
+      projects: Array<LocalizedItem & { href: string }>;
+      relatedText: string;
+      relatedHref: string;
+      contactText: string;
+    }
+  >;
   skills: { title: string; categories: Record<string, LocalizedItem> };
   production: { title: string; description: string };
   about: { headline: string; paragraphs: string[] };
@@ -95,84 +102,128 @@ function renderHome(locale: LocaleData, language: 'ru' | 'en'): string {
     })
     .join('');
   const experience = Object.values(locale.experience.items)
-    .map((item) => `<article><h3>${escapeHtml(item.company)}</h3><p>${escapeHtml(item.role)} · ${escapeHtml(item.period)}</p><p>${escapeHtml(item.summary)}</p>${list(item.responsibilities)}</article>`)
+    .map(
+      (item) =>
+        `<article><h3>${escapeHtml(item.company)}</h3><p>${escapeHtml(item.role)} · ${escapeHtml(item.period)}</p><p>${escapeHtml(item.summary)}</p>${list(item.responsibilities)}</article>`
+    )
     .join('');
   const skills = Object.values(locale.skills.categories)
-    .map((item) => `<article><h3>${escapeHtml(item.title)}</h3>${list(item.skills)}</article>`)
+    .map(
+      (item) =>
+        `<article><h3>${escapeHtml(item.title)}</h3>${list(item.skills)}</article>`
+    )
     .join('');
 
   return `<main><header><p>${escapeHtml(locale.profile.name)}</p><p>${escapeHtml(locale.profile.title)}</p><h1>${escapeHtml(locale.hero.headline)}</h1><p>${escapeHtml(locale.hero.description)}</p></header><section><h2>${escapeHtml(locale.capabilities.title)}</h2>${cards(locale.capabilities.items)}</section><section><h2>${escapeHtml(locale.projects.title)}</h2>${projects}</section><section><h2>${escapeHtml(locale.experience.title)}</h2>${experience}</section><section><h2>${escapeHtml(locale.services.title)}</h2>${cards(locale.services.items)}</section><section><h2>${escapeHtml(locale.skills.title)}</h2>${skills}</section><section><h2>${escapeHtml(locale.production.title)}</h2><p>${escapeHtml(locale.production.description)}</p></section><section><h2>${escapeHtml(locale.about.headline)}</h2>${locale.about.paragraphs.map((item) => `<p>${escapeHtml(item)}</p>`).join('')}</section><section><h2>${escapeHtml(locale.contact.headline)}</h2><p>${escapeHtml(locale.contact.description)}</p></section></main>`;
 }
 
-function objectValue(record: Record<string, unknown>, key: string): Record<string, unknown> {
+function objectValue(
+  record: Record<string, unknown>,
+  key: string
+): Record<string, unknown> {
   const value = record[key];
   return typeof value === 'object' && value !== null && !Array.isArray(value)
-    ? value as Record<string, unknown>
+    ? (value as Record<string, unknown>)
     : {};
 }
 
 function stringArray(record: Record<string, unknown>, key: string): string[] {
   const value = record[key];
-  return Array.isArray(value) ? value.filter((item): item is string => typeof item === 'string') : [];
+  return Array.isArray(value)
+    ? value.filter((item): item is string => typeof item === 'string')
+    : [];
 }
 
 function renderCaseStudy(
   locale: LocaleData,
   id: 'sandbox' | 'ispring',
-  language: 'ru' | 'en',
+  language: 'ru' | 'en'
 ): string {
   const study = objectValue(locale.caseStudy, id);
   const overview = study.overview;
-  const sections = id === 'sandbox'
-    ? ['architecture', 'tasks']
-    : ['tested', 'tools', 'tasks'];
-  const content = sections.map((key) => {
-    const titleKey = `${key}Title`;
-    return `<section><h2>${escapeHtml(study[titleKey])}</h2>${list(stringArray(study, key))}</section>`;
-  }).join('');
+  const sections =
+    id === 'sandbox' ? ['architecture', 'tasks'] : ['tested', 'tools', 'tasks'];
+  const content = sections
+    .map((key) => {
+      const titleKey = `${key}Title`;
+      return `<section><h2>${escapeHtml(study[titleKey])}</h2>${list(stringArray(study, key))}</section>`;
+    })
+    .join('');
 
   const prefix = language === 'en' ? '/en' : '';
   const homePath = language === 'en' ? '/en/' : '/';
-  const otherProject = id === 'sandbox'
-    ? `${prefix}/projects/ispring-testing`
-    : `${prefix}/projects/sandbox`;
+  const otherProject =
+    id === 'sandbox'
+      ? `${prefix}/projects/ispring-testing`
+      : `${prefix}/projects/sandbox`;
   const navigation = `<nav aria-label="Related pages"><a href="${homePath}">${escapeHtml(locale.profile.name)}</a><a href="${prefix}/python-backend-developer">Python Backend</a><a href="${prefix}/engineer-designer">Engineering</a><a href="${otherProject}">Related project</a></nav>`;
 
   return `<main>${navigation}<article><p>${escapeHtml(study.eyebrow)}</p><h1>${escapeHtml(study.title)}</h1><p>${escapeHtml(study.role)} · ${escapeHtml(study.year)}</p><section><h2>${escapeHtml(study.overviewTitle)}</h2><p>${escapeHtml(overview)}</p></section>${content}</article></main>`;
 }
 
-function renderLanding(locale: LocaleData, id: 'pythonBackend' | 'engineeringDesign'): string {
+function renderLanding(
+  locale: LocaleData,
+  id: 'pythonBackend' | 'engineeringDesign'
+): string {
   const page = locale.landingPages[id];
   const work = page.work
-    .map((item) => `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p></article>`)
+    .map(
+      (item) =>
+        `<article><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.description)}</p></article>`
+    )
     .join('');
   const projects = page.projects
-    .map((item) => `<article><h3><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a></h3><p>${escapeHtml(item.description)}</p></article>`)
+    .map(
+      (item) =>
+        `<article><h3><a href="${escapeHtml(item.href)}">${escapeHtml(item.title)}</a></h3><p>${escapeHtml(item.description)}</p></article>`
+    )
     .join('');
 
   return `<main><article><p>${escapeHtml(page.eyebrow)}</p><h1>${escapeHtml(page.title)}</h1><p>${escapeHtml(page.lead)}</p><section><h2>${escapeHtml(page.proofTitle)}</h2>${list(page.proof)}</section><section><h2>${escapeHtml(page.workTitle)}</h2>${work}</section><section><h2>${escapeHtml(page.projectsTitle)}</h2>${projects}</section><p><a href="${escapeHtml(page.relatedHref)}">${escapeHtml(page.relatedText)}</a></p></article></main>`;
 }
 
-function setMeta(html: string, attribute: 'name' | 'property', key: string, content: string): string {
+function setMeta(
+  html: string,
+  attribute: 'name' | 'property',
+  key: string,
+  content: string
+): string {
   const expression = new RegExp(`<meta\\s+${attribute}="${key}"[^>]*>`, 'i');
   const tag = `<meta ${attribute}="${key}" content="${escapeHtml(content)}" />`;
-  return expression.test(html) ? html.replace(expression, tag) : html.replace('</head>', `    ${tag}\n  </head>`);
+  return expression.test(html)
+    ? html.replace(expression, tag)
+    : html.replace('</head>', `    ${tag}\n  </head>`);
 }
 
-function setHead(html: string, options: {
-  language: 'ru' | 'en';
-  title: string;
-  description: string;
-  canonical: string;
-  ruUrl: string;
-  enUrl: string;
-  schema: object;
-  routeId: 'home' | 'pythonBackend' | 'engineeringDesign' | 'sandbox' | 'ispring';
-}): string {
-  let output = html.replace(/<html lang="[^"]+">/, `<html lang="${options.language}">`);
-  output = output.replace(/<title>[\s\S]*?<\/title>/, `<title>${escapeHtml(options.title)}</title>`);
+function setHead(
+  html: string,
+  options: {
+    language: 'ru' | 'en';
+    title: string;
+    description: string;
+    canonical: string;
+    ruUrl: string;
+    enUrl: string;
+    schema: object;
+    routeId:
+      'home' | 'pythonBackend' | 'engineeringDesign' | 'sandbox' | 'ispring';
+  }
+): string {
+  let output = html.replace(
+    /<html lang="[^"]+">/,
+    `<html lang="${options.language}">`
+  );
+  output = output.replace(
+    /<title>[\s\S]*?<\/title>/,
+    `<title>${escapeHtml(options.title)}</title>`
+  );
   output = setMeta(output, 'name', 'description', options.description);
-  output = setMeta(output, 'name', 'robots', 'index, follow, max-image-preview:large');
+  output = setMeta(
+    output,
+    'name',
+    'robots',
+    'index, follow, max-image-preview:large'
+  );
   output = setMeta(output, 'property', 'og:title', options.title);
   output = setMeta(output, 'property', 'og:description', options.description);
   output = setMeta(output, 'property', 'og:url', options.canonical);
@@ -180,11 +231,18 @@ function setHead(html: string, options: {
     output,
     'property',
     'og:type',
-    options.routeId === 'home' || options.routeId === 'pythonBackend' || options.routeId === 'engineeringDesign'
+    options.routeId === 'home' ||
+      options.routeId === 'pythonBackend' ||
+      options.routeId === 'engineeringDesign'
       ? 'profile'
-      : 'article',
+      : 'article'
   );
-  output = setMeta(output, 'property', 'og:locale', options.language === 'en' ? 'en_US' : 'ru_RU');
+  output = setMeta(
+    output,
+    'property',
+    'og:locale',
+    options.language === 'en' ? 'en_US' : 'ru_RU'
+  );
   output = setMeta(output, 'property', 'og:image', socialImage);
   output = setMeta(output, 'property', 'og:image:secure_url', socialImage);
   output = setMeta(output, 'property', 'og:image:type', 'image/jpeg');
@@ -196,21 +254,52 @@ function setHead(html: string, options: {
   output = setMeta(output, 'name', 'twitter:description', options.description);
   output = setMeta(output, 'name', 'twitter:image', socialImage);
   output = setMeta(output, 'name', 'twitter:image:alt', options.title);
-  output = output.replace(/<link rel="canonical"[^>]*>/i, `<link rel="canonical" href="${options.canonical}" />`);
-  output = output.replace(/\s*<link rel="alternate" hreflang="[^"]+"[^>]*>/gi, '');
+  output = output.replace(
+    /<link rel="canonical"[^>]*>/i,
+    `<link rel="canonical" href="${options.canonical}" />`
+  );
+  output = output.replace(
+    /\s*<link rel="alternate" hreflang="[^"]+"[^>]*>/gi,
+    ''
+  );
   const alternates = `<link rel="alternate" hreflang="ru" href="${options.ruUrl}" />\n    <link rel="alternate" hreflang="en" href="${options.enUrl}" />\n    <link rel="alternate" hreflang="x-default" href="${options.ruUrl}" />`;
-  output = output.replace(/(<link rel="canonical"[^>]*>)/i, `$1\n    ${alternates}`);
+  output = output.replace(
+    /(<link rel="canonical"[^>]*>)/i,
+    `$1\n    ${alternates}`
+  );
   const schemaJson = JSON.stringify(options.schema).replaceAll('<', '\\u003c');
-  return output.replace(/<script id="structured-data"[\s\S]*?<\/script>/i, `<script id="structured-data" type="application/ld+json">${schemaJson}</script>`);
+  return output.replace(
+    /<script id="structured-data"[\s\S]*?<\/script>/i,
+    `<script id="structured-data" type="application/ld+json">${schemaJson}</script>`
+  );
 }
 
 function injectStaticContent(html: string, content: string): string {
   const staticContent = `<div id="seo-static">${content}</div>`;
-  return html.replace(/<noscript>[\s\S]*?<\/noscript>/i, staticContent);
+
+  const bodyStart = html.indexOf('<body>');
+  if (bodyStart === -1) {
+    throw new Error('HTML template must contain <body>');
+  }
+
+  const beforeBody = html.slice(0, bodyStart);
+  const body = html.slice(bodyStart);
+
+  const seoFallbackPattern =
+    /<noscript>\s*<main>[\s\S]*?<\/main>\s*<\/noscript>/i;
+
+  if (!seoFallbackPattern.test(body)) {
+    throw new Error('SEO fallback <noscript><main> not found in body');
+  }
+
+  return beforeBody + body.replace(seoFallbackPattern, staticContent);
 }
 
 async function readLocale(language: 'ru' | 'en'): Promise<LocaleData> {
-  const content = await readFile(resolve(root, 'src', 'locales', language, 'common.json'), 'utf8');
+  const content = await readFile(
+    resolve(root, 'src', 'locales', language, 'common.json'),
+    'utf8'
+  );
   return JSON.parse(content) as LocaleData;
 }
 
@@ -223,24 +312,34 @@ async function main() {
       const pathname = language === 'en' ? route.enPath : route.ruPath;
       const metadata = locales[language].meta.routes[route.id];
       const canonical = absoluteUrl(pathname);
-      const body = route.id === 'home'
-        ? renderHome(locales[language], language)
-        : route.id === 'pythonBackend' || route.id === 'engineeringDesign'
-          ? renderLanding(locales[language], route.id)
-          : renderCaseStudy(locales[language], route.id, language);
-      const output = injectStaticContent(setHead(template, {
-        language,
-        title: metadata.title,
-        description: metadata.description,
-        canonical,
-        ruUrl: absoluteUrl(route.ruPath),
-        enUrl: absoluteUrl(route.enPath),
-        schema: buildStructuredData(route.id, canonical, metadata.title, metadata.description),
-        routeId: route.id,
-      }), body);
-      const outputPath = pathname === '/'
-        ? resolve(dist, 'index.html')
-        : resolve(dist, pathname.replace(/^\//, ''), 'index.html');
+      const body =
+        route.id === 'home'
+          ? renderHome(locales[language], language)
+          : route.id === 'pythonBackend' || route.id === 'engineeringDesign'
+            ? renderLanding(locales[language], route.id)
+            : renderCaseStudy(locales[language], route.id, language);
+      const output = injectStaticContent(
+        setHead(template, {
+          language,
+          title: metadata.title,
+          description: metadata.description,
+          canonical,
+          ruUrl: absoluteUrl(route.ruPath),
+          enUrl: absoluteUrl(route.enPath),
+          schema: buildStructuredData(
+            route.id,
+            canonical,
+            metadata.title,
+            metadata.description
+          ),
+          routeId: route.id,
+        }),
+        body
+      );
+      const outputPath =
+        pathname === '/'
+          ? resolve(dist, 'index.html')
+          : resolve(dist, pathname.replace(/^\//, ''), 'index.html');
       await mkdir(dirname(outputPath), { recursive: true });
       await writeFile(outputPath, output, 'utf8');
     }
