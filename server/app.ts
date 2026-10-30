@@ -14,7 +14,7 @@ function allowedHosts(): Set<string> | null {
     raw
       .split(',')
       .map((h) => h.trim().toLowerCase())
-      .filter(Boolean),
+      .filter(Boolean)
   );
 }
 
@@ -32,12 +32,29 @@ function createSecurityMiddleware() {
           "'self'",
           "'sha256-wGT3csR+uJQNRUaez4kfY4L+xotB4O9EVxSuOudQugY='",
           'https://www.clarity.ms',
+          'https://mc.yandex.ru',
         ],
         // Inline styles are required by Framer Motion / some CSS-in-JS runtime styles.
-        'style-src': ["'self'", 'https://fonts.googleapis.com', "'unsafe-inline'"],
+        'style-src': [
+          "'self'",
+          'https://fonts.googleapis.com',
+          "'unsafe-inline'",
+        ],
         'font-src': ["'self'", 'https://fonts.gstatic.com', 'data:'],
-        'img-src': ["'self'", 'data:', 'blob:', 'https://*.clarity.ms', 'https://c.bing.com'],
-        'connect-src': ["'self'", 'https://*.clarity.ms', 'https://c.bing.com'],
+        'img-src': [
+          "'self'",
+          'data:',
+          'blob:',
+          'https://*.clarity.ms',
+          'https://c.bing.com',
+          'https://mc.yandex.ru',
+        ],
+        'connect-src': [
+          "'self'",
+          'https://*.clarity.ms',
+          'https://c.bing.com',
+          'https://mc.yandex.ru',
+        ],
         'worker-src': ["'self'", 'blob:'],
         ...(isProduction ? { 'upgrade-insecure-requests': [] } : {}),
       },
@@ -63,7 +80,7 @@ export function safeErrorHandler(
   _error: unknown,
   _req: Request,
   res: Response,
-  _next: NextFunction,
+  _next: NextFunction
 ) {
   if (res.headersSent) return;
 
@@ -104,7 +121,10 @@ export function createApp() {
     try {
       const origin = new URL(configuredOrigin);
       const requestHost = (req.headers.host || '').toLowerCase();
-      if (req.protocol !== origin.protocol.replace(':', '') || requestHost !== origin.host.toLowerCase()) {
+      if (
+        req.protocol !== origin.protocol.replace(':', '') ||
+        requestHost !== origin.host.toLowerCase()
+      ) {
         res.redirect(308, `${origin.origin}${req.originalUrl}`);
         return;
       }
@@ -120,7 +140,7 @@ export function createApp() {
   app.use((_req, res, next) => {
     res.setHeader(
       'Permissions-Policy',
-      'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()',
+      'camera=(), microphone=(), geolocation=(), payment=(), usb=(), interest-cohort=()'
     );
     next();
   });
@@ -141,7 +161,10 @@ export function createApp() {
       return;
     }
 
-    const requestHost = (req.headers.host || '').split(',')[0]?.trim().toLowerCase();
+    const requestHost = (req.headers.host || '')
+      .split(',')[0]
+      ?.trim()
+      .toLowerCase();
     if (!requestHost || !hosts.has(requestHost)) {
       res.status(403).json({ ok: false, error: 'forbidden' });
       return;
@@ -161,7 +184,10 @@ export function createApp() {
     try {
       const originUrl = new URL(origin);
       const originHost = originUrl.host.toLowerCase();
-      const requestHost = (req.headers.host || '').split(',')[0]?.trim().toLowerCase();
+      const requestHost = (req.headers.host || '')
+        .split(',')[0]
+        ?.trim()
+        .toLowerCase();
 
       if (requestHost && originHost === requestHost) {
         if (hosts && !hosts.has(originHost)) {
