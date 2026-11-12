@@ -275,7 +275,10 @@ function setHead(
 }
 
 function injectStaticContent(html: string, content: string): string {
-  const staticContent = `<div id="seo-static">${content}</div>`;
+  const staticContent =
+    '<div id="seo-static" aria-hidden="true" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0">' +
+    content +
+    '</div>';
 
   const bodyStart = html.indexOf('<body>');
   if (bodyStart === -1) {

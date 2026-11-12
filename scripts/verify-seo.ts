@@ -53,7 +53,10 @@ async function verifyPage(pathname: string, ruPath: string, enPath: string) {
   assert(html.includes('name="twitter:card" content="summary_large_image"'), `${pathname} Twitter card mismatch`);
   assert(html.includes('name="twitter:image" content="https://antonfedotov.com/og/anton-fedotov-portfolio.jpg"'), `${pathname} missing Twitter image`);
   assert(html.includes('id="structured-data" type="application/ld+json"'), `${pathname} missing JSON-LD`);
-  assert(html.includes('id="seo-static"'), `${pathname} missing static content`);
+  assert(
+    html.includes('id="seo-static" aria-hidden="true"'),
+    `${pathname} static content must stay in HTML and be hidden before scripts run`,
+  );
   assert(count(html, /<h1>[^<]+<\/h1>/g) === 1, `${pathname} must have one static H1`);
 
   for (const href of REQUIRED_INTERNAL_LINKS[pathname] ?? []) {
