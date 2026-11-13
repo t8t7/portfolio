@@ -1,7 +1,7 @@
 {
   "meta": {
     "title": "Антон Федотов — Python-разработчик и инженер-конструктор",
-    "description": "Антон Федотов — Python Backend Developer и инженер-конструктор. Программные решения, инженерное проектирование, производственная автоматизация, API и базы данных.",
+    "description": "Антон Федотов — Python Backend Developer и инженер-конструктор. Программные решения, инженерное проектирование, автоматизация, API и базы данных.",
     "routes": {
       "home": {
         "title": "Антон Федотов — Python-разработчик и инженер-конструктор",
@@ -9,7 +9,7 @@
       },
       "pythonBackend": {
         "title": "Python Backend Developer Антон Федотов — проекты и стек",
-        "description": "Python backend-разработка: FastAPI, REST API, PostgreSQL, Docker, тестирование и развёртывание. Реальные проекты Антона Федотова без вымышленных кейсов."
+        "description": "Python backend: FastAPI, PostgreSQL, Docker и REST API. Проекты Антона Федотова."
       },
       "engineeringDesign": {
         "title": "Инженер-конструктор SolidWorks — Антон Федотов",
@@ -73,6 +73,7 @@
     "ctaResume": "Скачать CV",
     "scroll": "Ниже",
     "scrollAria": "Перейти к разделу компетенций",
+    "backgroundAlt": "Инженерная схема и город на фоне",
     "headline": "Разрабатываю программные решения и автоматизирую инженерные процессы",
     "description": "Инженерный опыт в реальном производстве + Python, API, базы данных и автоматизация.",
     "stack": [

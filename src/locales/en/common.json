@@ -9,7 +9,7 @@
       },
       "pythonBackend": {
         "title": "Python Backend Developer — Anton Fedotov",
-        "description": "Python backend development with FastAPI, REST APIs, PostgreSQL, Docker, testing and VPS deployment. Verified projects and experience by Anton Fedotov."
+        "description": "Python backend with FastAPI, PostgreSQL, Docker and REST APIs. Projects by Anton Fedotov."
       },
       "engineeringDesign": {
         "title": "SolidWorks Mechanical Design Engineer — Anton Fedotov",
@@ -73,6 +73,7 @@
     "ctaResume": "Download CV",
     "scroll": "Scroll",
     "scrollAria": "Scroll to capabilities",
+    "backgroundAlt": "Engineering drawing and city in the background",
     "headline": "I build software solutions and automate engineering workflows",
     "description": "Hands-on manufacturing experience combined with Python, APIs, databases and automation.",
     "stack": [

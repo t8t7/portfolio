@@ -30,7 +30,7 @@ export function Hero() {
           sizes="100vw"
           width={1920}
           height={1072}
-          alt=""
+          alt={t('hero.backgroundAlt')}
           aria-hidden="true"
           className="h-full w-full object-cover object-center"
           fetchPriority="high"

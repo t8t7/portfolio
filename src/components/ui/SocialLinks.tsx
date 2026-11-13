@@ -13,7 +13,7 @@ const icons = {
   hh: (
     <img
       src={hhLogo}
-      alt=""
+      alt="HH.ru"
       aria-hidden="true"
       width={20}
       height={20}
